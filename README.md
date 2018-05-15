@@ -1,3 +1,7 @@
+Master only contain half of authentication work
+Final has user authentication
+lecture 3 have pre chat functionality
+
 A user authentication
 
 so 
