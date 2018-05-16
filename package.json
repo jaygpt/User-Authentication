@@ -13,6 +13,7 @@
   "author": "Me",
   "license": "ISC",
   "dependencies": {
+    "async": "^2.5.0",
     "bcryptjs": "*",
     "body-parser": "*",
     "connect-flash": "*",
@@ -22,8 +23,10 @@
     "express-messages": "*",
     "express-session": "*",
     "express-validator": "*",
+    "formidable": "^1.2.1",
     "mongodb": "*",
     "mongoose": "*",
+    "multer": "^1.3.0",
     "passport": "*",
     "passport-http": "*",
     "passport-local": "*"

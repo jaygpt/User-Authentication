@@ -1,0 +1,55 @@
+<!--
+<form action="/admin" method="POST" enctype="multipart/form-data">
+      <div class="file-field input-field">
+        <div class="file-path-wrapper">
+            <input type="text" name="club" placeholder = "Club name">
+        </div>
+      </div>
+        <div>
+        <input type="text" name="position" placeholder = "Position">
+    </div>
+        <button type = "submit">Add Club</button>
+    </form>
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  
+  <title>Node File Uploads</title>
+</head>
+<body>
+  <div class="container">
+    <h1>File Upload</h1>
+    <form action="/admin" method="POST" enctype="multipart/form-data">
+        <div class="file-field input-field">
+        <div class="file-path-wrapper">
+            <input type="text" name="club" placeholder = "Club name">
+        </div>
+      </div>
+        <div>
+        <input type="text" name="position" placeholder = "Position">
+        </div>
+      <div class="file-field input-field">
+        <div class="btn grey">
+          <span>File</span>
+          <input name="myImage" type="file">
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text">
+        </div>
+      </div>
+      <button type="submit" class="btn">Submit</button>
+    </form>
+    <br>
+  </div>
+
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>  
+</body>
+</html>

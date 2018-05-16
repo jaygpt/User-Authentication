@@ -69,18 +69,21 @@ passport.use(new LocalStrategy(
 			});
 		});
 }));
+//For new users 
 passport.serializeUser(function (user, done) {
 	done(null, user.id);
 });
-
+//For old users and to make the login successful
 passport.deserializeUser(function (id, done) {
 	User.getUserById(id, function (err, user) {
+        console.log(user.name);
+        exports.myname = user.name;
 		done(err, user);
 	});
 });
 
 router.post('/login',
-	passport.authenticate('local', { successRedirect: '/', failureRedirect: '/users/login', failureFlash: true }),
+	passport.authenticate('local', { successRedirect: '/home', failureRedirect: '/users/login', failureFlash: true }),
 	function (req, res) {
 		res.redirect('/');
 	});
@@ -91,4 +94,3 @@ router.get('/logout',function(req,res){
     res.redirect('/users/login');
 })
 module.exports = router;
-
