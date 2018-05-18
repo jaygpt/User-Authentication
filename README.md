@@ -1,8 +1,3 @@
-A user authentication
+A basic chat application which use mongodb,nodejs etc for chatting it is under construction...........
 
-so 
-models are used for database
-node module is trivial
-public is used for static files
-routes is used to do basic routing
-and views is used to view the html file
+use npm install to install all packages, and >> mongod to run database the >>node app.js to run the server
