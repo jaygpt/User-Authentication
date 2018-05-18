@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var clubNames = mongoose.Schema({
 	myName:{
         type: String,
-        default: '{{user.name}}'
+        default: ''
     },
     name: {
 		type: String,

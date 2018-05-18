@@ -44,7 +44,7 @@ router.post('/register',function(req,res){
         
         User.createUser(newUser, function (err, user) {
             if (err) throw err;
-            console.log(user);
+            //console.log(user);
         });
          	req.flash('success_msg', 'You are registered and can now login');
             res.redirect('/users/login');
@@ -76,8 +76,8 @@ passport.serializeUser(function (user, done) {
 //For old users and to make the login successful
 passport.deserializeUser(function (id, done) {
 	User.getUserById(id, function (err, user) {
-        console.log(user.name);
-        exports.myname = user.name;
+        //console.log(user.name);
+        //exports.myname = user.name;
 		done(err, user);
 	});
 });

@@ -28,13 +28,13 @@ router.get('/',ensureAuthentication,function(req,res){
         const resl = results[0];
         //const resl1 = results[1];
         
-        console.log(resl);
+        //console.log(resl);
         const dataChunk = [];
         const chunkSize = 3;
         for(let i = 0;i < resl.length ; i = i + chunkSize){
             dataChunk.push(resl.slice(i,i+chunkSize));
         }
-        console.log(dataChunk);
+        //console.log(dataChunk);
         res.render('dashboard', {title: 'Portal', resl: resl});
     })
     

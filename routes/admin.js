@@ -27,11 +27,14 @@ router.post('/',(req,res) => {
         if(err){ res.sendFile('/home/jay/Desktop/new/userauth/views/admin/admin2.html');
         req.flash('faliure_msg', 'You are not registered and can now login');
         }else{
-            console.log(req.file);
+            var username = req.body.name;
+            //console.log(req.file);
             var newClub = new Club(); 
             newClub.name = req.body.club;
             newClub.positioninclub = req.body.position;
             newClub.image = req.file.filename;
+            newClub.myName = username;
+
             newClub.save((err) =>{
                 res.redirect('/');
                 req.flash('failure_msg', 'Your detail is not saved');

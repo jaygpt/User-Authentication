@@ -3,7 +3,7 @@ var router = express.Router();
 
 router.get('/:name',function(req,res){
     var groupname = req.params.name;
-    res.render('groupchat/groupchat',{name:groupname});
+    res.render('groupchat/groupchat',{groupName:groupname});
 });
 /*
 function ensureAuthentication(req,res,next){

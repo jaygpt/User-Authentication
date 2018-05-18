@@ -10,6 +10,9 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
+var socketIO = require('socket.io');
+var http = require('http');
+var {Users} = require('./helpers/UserClass');
 
 mongoose.connect('mongodb://localhost/loginapp');
 var db = mongoose.connection;
@@ -76,6 +79,7 @@ app.use(function (req, res, next) {
 next();
 });
 //routing file
+
 app.use('/', routes);
 app.use('/users', users);
 app.use('/admin',admin);
@@ -84,7 +88,8 @@ app.use('/group',group);
 
 // Set Port
 app.set('port', (process.env.PORT || 3000));
-
-app.listen(app.get('port'), function(){
+var server = app.listen(app.get('port'), function(){
 	console.log('Server started on port '+app.get('port'));
 });
+var io = socketIO(server);
+require('./socket/groupchat.js')(io,Users);
