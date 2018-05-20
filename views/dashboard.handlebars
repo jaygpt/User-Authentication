@@ -1,0 +1,99 @@
+<h1 class="page-header">Dashboard</h1>
+<p>Welcome to your dashboard</p>
+
+
+<div>
+<!--nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">{{user.username}}</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Members</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdpwn <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav-->
+
+</div>
+
+<div class="col-md-9">
+                <div>
+                    {{#each resl}}
+                    <div class="category-list">
+                        <div class="row ">
+                            <form action="#" method="post" id="add-fav">
+                                <div class="item col-md-4">
+                                    <a href="/group/{{this.name}}">
+                                    <div class="thumbnail">
+                                       <img alt="">
+                                        <div class="caption">
+                                            <h4>{{this.name}}</h4> 
+                                            <div class="row">
+                                                <div class="col-xs-12 col-md-6">
+                                                    <p>
+                                                        {{this.positioninclub}}
+                                                    </p>
+                                                </div>
+                                                
+                                                <div class="col-xs-12 col-md-6">
+                                                    <button class="btn add-fav">
+                                                        Add To Favorite
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                        </a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    {{/each}}
+    </div>
+    <div class="col-md-3">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="filter-container">
+                            <div class="card">
+                                <form action="#" method="post">
+                                    <div class="content">
+                                        <p class="filter">
+                                            FILTER
+                                        </p>
+                                        <hr/>
+                                        <select class="" name="country" id="country" >
+                                            <option value="">Filter By Position</option>
+											<option>Students</option>
+											<option>Tutor</option>
+											<option>Instructor</option>
+                                        </select>
+                                        <div class="clearfix"></div>
+                                        <button class="btn add-apply">Apply</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</div>
+
