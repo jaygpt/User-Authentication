@@ -1,3 +1,3 @@
 A basic chat application which use mongodb,nodejs etc for chatting it is under construction...........
-
+by our team
 use npm install to install all packages, and >> mongod to run database the >>node app.js to run the server
