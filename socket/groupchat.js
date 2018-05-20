@@ -1,3 +1,5 @@
+var club = require('../models/club');
+
 module.exports = function(io, Users){
     
     const users = new Users();
@@ -15,7 +17,15 @@ module.exports = function(io, Users){
         })
         
         socket.on('createMessage',(message, callback) => {
-            console.log(message);
+            var room = message.room;
+            club.findOne({name: room})
+                .then((found) => {
+                found.post.push({sender: message.sender,message: message.text});
+                found.save();
+                console.log(found);
+            })
+             //we will use high promise here
+            
             io.to(message.room).emit('newMessage',{
                  text: message.text,
                  room: message.room,

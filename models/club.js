@@ -1,10 +1,7 @@
 var mongoose = require('mongoose');
-
+var postSchema = require('./post');
 var clubNames = mongoose.Schema({
-	myName:{
-        type: String,
-        default: ''
-    },
+	
     name: {
 		type: String,
         default: ''
@@ -17,6 +14,7 @@ var clubNames = mongoose.Schema({
 		type: String,
         default: 'default.png'
 	},
+    post : [postSchema],
     fans: [{
     otherclubs: {type: String,default: ''},
         responsibility: {type: String,default: ''}

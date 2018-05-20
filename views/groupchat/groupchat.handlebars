@@ -134,16 +134,18 @@
 
                             <div id="chat_area" class="chat_area">
                               <ul id="messages" class = "list-unstyled">
- <!--                               <li class="left">
+                                  {{#each message}}
+                                  <li class="left">
                                        <span class="chat-img1 pull-left">
                                            <img src="" class="img-circle" alt="">
                                        </span>
                                        <div class="chat-body1">
-                                           <span class="chat-name">{{user.username}}</span>
+                                           <span class="chat-name">{{this.sender}}</span>
                                            <br>
-                                           message body  {{sender}}
+                                          {{this.message}}
                                        </div>
-                                    </li> -->
+                                    </li>
+                                  {{/each}}
                                 </ul>
                                 <script id="message-template" type="text/x-handlebars-template">
                                     <li class="left">

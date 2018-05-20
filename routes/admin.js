@@ -33,7 +33,7 @@ router.post('/',(req,res) => {
             newClub.name = req.body.club;
             newClub.positioninclub = req.body.position;
             newClub.image = req.file.filename;
-            newClub.myName = username;
+            //newClub.myName = username;
 
             newClub.save((err) =>{
                 res.redirect('/');
