@@ -49,15 +49,15 @@ $(document).ready(function(){
         var template = document.getElementById('messages');
         template.innerHTML +=  '<li class = "left"><span class = "chat-img1 pull-left"><img src="http://placehold.it/300x300" class="img-circle" alt=""></span><div class = "chat-body1"><span class="chat-name">' + data.from + '</span><br>' + data.text + '</div></li>';
     });
-    
-    
+   
     $('#message-form').on('submit',function(e){
         e.preventDefault();
         var msg = $('#msg').val();
         socket.emit('createMessage',{
             text: msg,
             room: room,
-            sender: sender
+            sender: sender,
+            
         }, function(){
             //this id to remove data from input field
             $('#msg').val('');

@@ -1,5 +1,5 @@
 var club = require('../models/club');
-
+var multer = require('multer');
 module.exports = function(io, Users){
     
     const users = new Users();
@@ -29,7 +29,8 @@ module.exports = function(io, Users){
             io.to(message.room).emit('newMessage',{
                  text: message.text,
                  room: message.room,
-                from: message.sender
+                from: message.sender,
+                
             });
             callback();
         });
