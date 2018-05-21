@@ -1335,7 +1335,11 @@ mark,
   text-transform: capitalize;
 }
 .text-muted {
+<<<<<<< HEAD
+  color: lightseagreen;
+=======
   color: #777;
+>>>>>>> a36c651d3d7961d43e2e9d9dce5439279a8eeb8c
 }
 .text-primary {
   color: #337ab7;
@@ -3060,8 +3064,13 @@ fieldset[disabled] a.btn {
   pointer-events: none;
 }
 .btn-default {
+<<<<<<< HEAD
+  color: black;
+  background-color: lightgrey;
+=======
   color: #333;
   background-color: #fff;
+>>>>>>> a36c651d3d7961d43e2e9d9dce5439279a8eeb8c
   border-color: #ccc;
 }
 .btn-default:focus,

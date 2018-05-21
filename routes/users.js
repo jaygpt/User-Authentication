@@ -10,9 +10,10 @@ router.get('/register',function(req, res){
 	res.render('register');
 });
 
-router.get('/login',function(req, res){
-	res.render('login');
+router.get('/errorpage',function(req, res){
+	res.render('errorpage');
 });
+
 
 router.post('/register',function(req,res){
     var name = req.body.name;
@@ -83,14 +84,15 @@ passport.deserializeUser(function (id, done) {
 });
 
 router.post('/login',
-	passport.authenticate('local', { successRedirect: '/home', failureRedirect: '/users/login', failureFlash: true }),
+	passport.authenticate('local', { successRedirect: '/home', failureRedirect: '/users/errorpage', failureFlash: true }),
 	function (req, res) {
 		res.redirect('/');
 	});
 
+
 router.get('/logout',function(req,res){
     req.logout();
     req.flash('success_msg','Your are successfully logged out');
-    res.redirect('/users/login');
+    res.redirect('/');
 })
 module.exports = router;
