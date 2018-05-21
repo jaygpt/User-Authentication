@@ -18,7 +18,6 @@ module.exports = function(io, Users){
         
         socket.on('createMessage',(message, callback) => {
             var room = message.room;
-            
             club.findOne({name: room})
                 .then((found) => {
                 found.post.push({sender: message.sender,message: message.text});

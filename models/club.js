@@ -16,8 +16,7 @@ var clubNames = mongoose.Schema({
 	},
     post : [postSchema],
     fans: [{
-        otherclubs: {type: String,default: ''},
-        responsibility: {type: String,default: ''}
+        otherclubs: {type: String,default: ''}
 }]
 });
 

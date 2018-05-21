@@ -27,8 +27,7 @@ router.get('/',ensureAuthentication,function(req,res){
     ],(err,results) => {
         const resl = results[0];
         //const resl1 = results[1];
-        
-        console.log(resl);
+        //console.log(resl);
         const dataChunk = [];
         const chunkSize = 3;
         for(let i = 0;i < resl.length ; i = i + chunkSize){
