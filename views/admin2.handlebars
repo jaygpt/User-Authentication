@@ -41,8 +41,9 @@
         <div class="file-path-wrapper">
           <input class="file-path validate" type="text">
         </div>
+          
       </div>
-      <button type="submit" class="btn">Submit</button>
+      <button type="submit" class="btn">Submit by {{user.username}}</button>
     </form>
     <br>
   </div>
@@ -50,9 +51,8 @@
                     {{#each resl}}
                     <div class="category-list">
                         <div class="row ">
-                            <form action="#" method="post" id="add-fav">
+                            <form action="/admin/save" method="post" id="favor">
                                 <div class="item col-md-4">
-                                    <a href="/group/{{this.name}}">
                                     <div class="thumbnail">
                                        <img alt="">
                                         <div class="caption">
@@ -60,22 +60,19 @@
                                             <div class="row">
                                                 <div class="col-xs-12 col-md-6">
                                                     <p>
-                                                        {{this.positioninclub}}
+                                                        Total people in Club are {{this.fans.length}}
                                                     </p>
                                                 </div>
-                                                
                                                 <div class="col-xs-12 col-md-6">
-                                                    
-
-<button onclick="location.href='http://www.example.com'" type="button">
-     www.example.com</button>
-
-
+                                                <input type="hidden" name ="id" id="id" value="{{this._id}}">
+                                                <input type="hidden" name ="clubName" id="club_name" value="{{this.name}}">    
+                                                    <button class="btn add-fav">
+                                                        Add To Favorite
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                        </a>
                                 </div>
                             </form>
                         </div>
@@ -86,6 +83,7 @@
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src="/js/club.js"></script>
 </body>
 </html>

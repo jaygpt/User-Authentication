@@ -1,40 +1,9 @@
-<h1 class="page-header">Dashboard</h1>
-<p>Welcome to your dashboard</p>
-
-
-<div>
-<!--nav class="navbar navbar-default">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">{{user.username}}</a>
-    </div>
-
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Members</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdpwn <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav-->
-
-</div>
-
+<html>
+    <head>
+    <link rel="stylesheet" href="/css/group.css">
+    
+    </head>
+<body>
 <div class="col-md-9">
                 <div>
                     {{#each resl}}
@@ -49,15 +18,10 @@
                                             <h4>{{this.name}}</h4> 
                                             <div class="row">
                                                 <div class="col-xs-12 col-md-6">
+
                                                     <p>
                                                         {{this.positioninclub}}
                                                     </p>
-                                                </div>
-                                                
-                                                <div class="col-xs-12 col-md-6">
-                                                    <button class="btn add-fav">
-                                                        Add To Favorite
-                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -69,31 +33,56 @@
                     </div>
                     {{/each}}
     </div>
-    <div class="col-md-3">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="filter-container">
-                            <div class="card">
-                                <form action="#" method="post">
-                                    <div class="content">
-                                        <p class="filter">
-                                            FILTER
-                                        </p>
-                                        <hr/>
-                                        <select class="" name="country" id="country" >
-                                            <option value="">Filter By Position</option>
-											<option>Students</option>
-											<option>Tutor</option>
-											<option>Instructor</option>
-                                        </select>
-                                        <div class="clearfix"></div>
-                                        <button class="btn add-apply">Apply</button>
+    <div class="col-sm-5 col-md-6 message_section">
+                        <div class="row">
+                            <div class="new_message_head">
+                                <div class="pull-left">
+                                <button class="club_name">
+                                  POSTS
+                                </button>
+                                </div>
+                                <div class="pull-right">
+                                </div>
+                            </div>
+
+                            <div id="chat_area" class="chat_area">
+                              <ul id="messages" class = "list-unstyled">
+                                  {{#each message}}
+                                  <li class="left">
+                                       <span class="chat-img1 pull-left">
+                                           <img src="" class="img-circle" alt="">
+                                       </span>
+                                       <div class="chat-body1">
+                                           <span class="chat-name">{{this.sender}}</span>
+                                           <br>
+                                          {{this.message}}
+                                       </div>
+                                    </li>
+                                  {{/each}}
+                                </ul>
+                                
+                            </div>
+                            
+                            <div class="message_write">
+                              <form  id="message-form" method="post">
+                                  <input type="hidden" id="groupName" value="{{groupName}}">
+                                  <input type="hidden" name ="sender" id="sender" value="{{user.username}}">
+                                  <textarea class="form-control" name="message" id="msg" placeholder="Type a message"></textarea>
+                                  <div class="btn grey">
+                                      <span>File</span>
+                                      <input name="myImage" type="file">
                                     </div>
-                                </form>
+                                  <div class="clearfix"></div>
+                                  <div class="chat_bottom">
+                                      <button id="send-message" class="pull-right btn btn-primary" style="background: #4aa1f3; border: #4aa1f3; ">
+                                          POST
+                                      </button>
+                                  </div>
+                              </form>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
 </div>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </body>
+</html>
