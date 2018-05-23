@@ -52,12 +52,11 @@ router.post('/',(req,res) => {
         }else{
             var username = req.body.name;
             //console.log(req.file);
+            console.log(username);
             var newClub = new Club(); 
             newClub.name = req.body.club;
             newClub.positioninclub = req.body.position;
-            //newClub.image = req.file.filename;
-            //newClub.myName = username;
-
+            newClub.image = req.file.myImage;
             newClub.save((err) =>{
                 res.redirect('/');
                 req.flash('failure_msg', 'Your detail is not saved');
@@ -65,5 +64,26 @@ router.post('/',(req,res) => {
         }
     });
     
+});
+router.post('/save',(req,res) => {
+    async.parallel([
+         function(callback){
+             Club.update({
+                 '_id': req.body.id,
+                 'fans.username' : {$ne : req.body.name}
+             }, {
+                 $push : {fans:{
+                    username : req.user.username,
+                     email :req.user.email
+                 }
+                 }
+             },(err,count) => {
+                 console.log(count);
+                 callback(err,count);
+             });
+         }
+    ],(err,results) => {
+        res.redirect('/admin');
+    })
 });
 module.exports = router;

@@ -30,21 +30,21 @@ $(document).ready(function(){
     
     socket.on('newMessage', function(data){
         console.log(data);
-        /*var template = $('#message-template').html();
-        var message = Mustache.render(template, {
-            text: data.text,
-            sender: data.from,
-            userImage: data.image
-        });
-        console.log(template);
-        $('#messages').append(message);
-        
-        var template = $('#message-template').html();
-        var templateScript = Handlebars.compile(template);
-        var context = {"sender":"naman","Text":"Bureaucrate"}
-        var html = templateScript(context);
-        $('#messages').append(html);
-        */
+//        /*var template = $('#message-template').html();
+//        var message = Mustache.render(template, {
+//            text: data.text,
+//            sender: data.from,
+//            userImage: data.image
+//        });
+//        console.log(template);
+//        $('#messages').append(message);
+//        
+//        var template = $('#message-template');
+//        var templateScript = Handlebars.compile(template);
+//        var context = {"sender":"naman","Text":"Bureaucrate"}
+//        var html = templateScript(context);
+//        $('#messages').append(html);
+//        */
         console.log(data.sender);
         var template = document.getElementById('messages');
         template.innerHTML +=  '<li class = "left"><span class = "chat-img1 pull-left"><img src="http://placehold.it/300x300" class="img-circle" alt=""></span><div class = "chat-body1"><span class="chat-name">' + data.from + '</span><br>' + data.text + '</div></li>';

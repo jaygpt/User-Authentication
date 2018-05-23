@@ -81,12 +81,12 @@ h3 {
     font-size: 13px;
     font-weight: 600;
     padding: 18px 10px;
-    width: 100%;
+    width: 200%;
     border: 1px solid rgba(128, 128, 128, 0.32);
 }
 
 .message_section {
-    border: 1px solid #dddddd;
+    border: 3px solid #dddddd;
 }
 
 .chat_area {
@@ -95,7 +95,7 @@ h3 {
     height: 360px;
     overflow-x: hidden;
     overflow-y: auto;
-    width: 100%;
+    width: 200%;
     border-left: 1px solid rgba(128, 128, 128, 0.32);
     border-bottom: 1px solid rgba(128, 128, 128, 0.32);
     border-right: 1px solid rgba(128, 128, 128, 0.32);
