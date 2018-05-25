@@ -1,0 +1,30 @@
+<head>
+    <link rel="stylesheet" href="/css/group.css">
+</head>
+<div id="chat_area" class="chat_area">
+                              <ul id="messages" class = "list-unstyled">
+                                  {{#each resl}}
+                                  <li class="left">
+                                       <span class="chat-img1 pull-left">
+                                           <img src="" class="img-circle" alt="">
+                                       </span>
+                                       <div class="chat-body1">
+                                           <span class="chat-name">{{this.commentor}}</span>
+                                           <br>
+                                          {{this.comments}}
+                                       </div>
+                                    </li>
+                                  {{/each}}
+                                </ul>
+                            </div>
+<div>
+     <form  id="message-form" method="post">
+    <textarea class="form-control" name="message" id="msg" placeholder="Type a message"></textarea>
+                                  <div class="clearfix"></div>
+                                  <div class="chat_bottom">
+                                      <button id="send-message" class="pull-right btn btn-primary" style="background: #4aa1f3; border: #4aa1f3; ">
+                                          Send
+                                      </button>
+                                  </div>
+         </form>
+</div>

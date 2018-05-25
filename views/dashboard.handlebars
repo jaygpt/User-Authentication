@@ -47,7 +47,7 @@
 
                             <div id="chat_area" class="chat_area">
                               <ul id="messages" class = "list-unstyled">
-                                  {{#each message}}
+                                  {{#each feed}}
                                   <li class="left">
                                        <span class="chat-img1 pull-left">
                                            <img src="" class="img-circle" alt="">
@@ -58,6 +58,7 @@
                                           {{this.message}}
                                        </div>
                                     </li>
+                                  <a href="/home/{{this._id}}">Comments</a>
                                   {{/each}}
                                 </ul>
                                 

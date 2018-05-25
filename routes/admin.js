@@ -66,6 +66,7 @@ router.post('/',(req,res) => {
     
 });
 router.post('/save',(req,res) => {
+    console.log('ss');
     async.parallel([
          function(callback){
              Club.update({

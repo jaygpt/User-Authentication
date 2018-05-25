@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var comments = mongoose.Schema({
 	commentor: String,
-    comments:{
+    comments: {
         type: String
     }
 });

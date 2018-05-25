@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 var comments = require('./comments');
-const feed = new Schema({
+const feed = new mongoose.Schema({
     sender: String,
     message: {
             type: String,
