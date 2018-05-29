@@ -47,7 +47,9 @@ router.get('/',ensureAuthentication,(req,res) => {
 
 router.get('/:link/',ensureAuthentication,(req,res) => {
         var alluser = [];
-
+    var params = req.params.link.split('.');
+    var nameParam = params[0];
+    console.log(nameParam);
     var mydep = User.mydepartment();
     var myname = User.myname();    
     user.find({department: mydep})
@@ -79,7 +81,7 @@ router.get('/:link/',ensureAuthentication,(req,res) => {
     var nameRegex = new RegExp("^" + req.user.username.toLowerCase(), "i");
     var noti = [];
     Message.aggregate([
-        {$match : {$or:[{'senderName': req.user.username},{'receiverName': req.user.username}]}},
+        {$match : {$or:[{'senderName': req.user.username},{'receiverName': nameParam}]}},
         {$sort: {'createdAt': -1}},
         {
             $group: {"_id" :{
@@ -103,14 +105,17 @@ router.get('/:link/',ensureAuthentication,(req,res) => {
     .then((found) => {
         //console.log(found);
     })
-    Message.find({'$or':[{'senderName': req.user.username},{'receiverName': req.user.username}]})
-    .populate('sender')
-    .populate('receiver')
+    //{$and:[{'senderName': req.user.username},{'receiverName': req.user.username}]}
+    Message.find({ $or : [
+        {$and : [{senderName: req.user.username},{receiverName: nameParam}]},
+        {$and : [{senderName: nameParam},{receiverName: req.user.username }]}
+    ]})
+    .sort({createdAt: 1})
     .then((result) => {
-       //console.log(result);
+        console.log(result);
+        res.render('private/private1',{alluser: alluser, result:result});
     })
-
-    res.render('private/private1',{alluser: alluser});
+    //res.render('private/private1',{alluser: alluser});
 });
 
 router.post('/:name/', ensureAuthentication,(req,res,next) => {

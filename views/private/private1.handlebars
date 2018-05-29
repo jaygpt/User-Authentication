@@ -70,18 +70,21 @@
 
                             <div class="chat_area">
                                 <ul id="messages" class="list-unstyled">
-                                        <li class="left clearfix">
+
+                                        {{#each result}}
+                                        <li class="left clearfix"></li>
                                             <span class="chat-img1 pull-left">
-                                                <img src="https://placehold.it/300x300" class="img-circle" />
+                                                <img src="https://placehold.it/300x300" class="img-circle" height="50px" width="50px"/>
                                             </span>
                                               <div class="chat-body1 clearfix">
                                                 <p>
-                                                    <span class="chat-name">Sender Name</span>
+                                                    <span class="chat-name">{{this.senderName}}</span>
                                                     <br />
-                                                    Message Body
+                                                    {{this.message}}
                                                 </p>
                                               </div>
                                          </li>
+                                         {{/each}}
                                 </ul>
                                 <!-- </ul> -->
                             </div><!--chat_area-->
