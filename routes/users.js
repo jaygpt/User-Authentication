@@ -10,6 +10,9 @@ var User = require('../models/user.js');
 router.get('/register',function(req, res){
 	res.render('register');
 });
+router.get('/login',function(req, res){
+	res.render('login');
+});
 
 router.get('/errorpage',function(req, res){
 	res.render('errorpage');

@@ -13,7 +13,8 @@ var mongoose = require('mongoose');
 var socketIO = require('socket.io');
 var http = require('http');
 var {Users} = require('./helpers/UserClass');
-
+var user = require('./models/user');
+var hbs = require('hbs');
 mongoose.connect('mongodb://localhost/loginapp');
 var db = mongoose.connection;
 
@@ -22,12 +23,15 @@ var users = require('./routes/users');
 var admin = require('./routes/admin');
 var home = require('./routes/home');
 var group = require('./routes/group');
+var chat = require('./routes/chat');
 //initialising the app
 var app = express();
 // View Engine
 app.set('views', path.join(__dirname, 'views'));
 app.engine('handlebars', exphbs({defaultLayout:'layout'}));
 app.set('view engine', 'handlebars');
+// exphbs.registerPartial('partial', fs.readFileSync(__dirname + '/views/partial.hbs', 'utf8'));
+hbs.registerPartials(__dirname + '/views/partials');
 
 // BodyParser Middleware
 app.use(bodyParser.json());
@@ -85,6 +89,7 @@ app.use('/users', users);
 app.use('/admin',admin);
 app.use('/home',home);
 app.use('/group',group);
+app.use('/chat',chat);
 
 // Set Port
 app.set('port', (process.env.PORT || 3000));
@@ -93,3 +98,4 @@ var server = app.listen(app.get('port'), function(){
 });
 var io = socketIO(server);
 require('./socket/groupchat.js')(io,Users);
+require('./socket/privatemessage.js')(io,Users);

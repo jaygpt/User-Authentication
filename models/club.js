@@ -12,10 +12,10 @@ var clubNames = mongoose.Schema({
         type: String,
         default: ''
     },
-	image: {
-		type: String,
-        default: 'default.png'
-	},
+//	image: {
+//		type: String,
+//        default: 'default.png'
+//	},
     post : [postSchema],
     fans: [fans]
 });

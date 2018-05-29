@@ -8,21 +8,7 @@ var department_feed = require('../models/department_feed');
 var bodyParser = require('body-parser');
 router.get('/',ensureAuthentication,function(req,res){
         //console.log('MAY' + User.myname());
-        var resl = [];
-        Club.find({})
-                .then((found) => {
-                //console.log(found);
-                for(let i = 0 ; i<found.length ; i++)
-                    {
-                        for(let j = 0; j<found[i].fans.length ; j++)
-                            {
-                                if(found[i].fans[j].username  == User.myname())
-                                    {
-                                        resl.push(found[i]);
-                                    }
-                            }
-                    }                
-    })
+        
     var feed = [];
             department_feed.findOne({department: User.mydepartment()})
                 .then((news) => {
@@ -34,7 +20,7 @@ router.get('/',ensureAuthentication,function(req,res){
                         feed.push(news.feeds[j]);
                     }
                     console.log(feed);
-                    res.render('dashboard', {title: 'Portal', resl: resl, feed: feed});
+                    res.render('dashboard', {title: 'Portal', feed: feed});
                 }
             })
 });

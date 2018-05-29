@@ -4,6 +4,7 @@
     
     </head>
 <body>
+    
 <div class="col-md-9">
                 <div>
                     {{#each resl}}
@@ -70,8 +71,7 @@
                                   <input type="hidden" name ="sender" id="sender" value="{{user.username}}">
                                   <textarea class="form-control" name="message" id="msg" placeholder="Type a message"></textarea>
                                   <div class="btn grey">
-                                      <span>File</span>
-                                      <input name="myImage" type="file">
+                                      <a href="/home/{{user.username}}/fileupload">File Upload</a>
                                     </div>
                                   <div class="clearfix"></div>
                                   <div class="chat_bottom">

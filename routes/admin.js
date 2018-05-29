@@ -52,11 +52,11 @@ router.post('/',(req,res) => {
         }else{
             var username = req.body.name;
             //console.log(req.file);
-            console.log(username);
+            //console.log(username);
             var newClub = new Club(); 
             newClub.name = req.body.club;
             newClub.positioninclub = req.body.position;
-            newClub.image = req.file.myImage;
+            //newClub.image = req.file.myImage;
             newClub.save((err) =>{
                 res.redirect('/');
                 req.flash('failure_msg', 'Your detail is not saved');
