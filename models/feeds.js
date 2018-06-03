@@ -5,6 +5,9 @@ const feed = new mongoose.Schema({
     message: {
             type: String,
     },
+    image: {
+        type : String,
+    },
     comments : [comments]
 });
 

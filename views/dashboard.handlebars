@@ -6,7 +6,44 @@
 <body>
     
 <div class="col-md-9">
-                <div>
+                
+    <div class="col-sm-5 col-md-6 message_section">
+                        <div class="row">
+                            <div class="new_message_head">
+                                <div class="pull-left">
+                                <button class="club_name">
+                                  POSTS
+                                </button>
+                                </div>
+                                <div class="pull-right">
+                                </div>
+                            </div>
+
+                            <div id="chat_area" class="chat_area">
+                              <ul id="messages" class = "list-unstyled">
+                                  {{#each feed}}
+                                  <li class="left">
+                                       <span class="chat-img1 pull-left">
+                                           <img src="" class="img-circle" alt="">
+                                       </span>
+                                       <div class="chat-body1">
+                                           <span class="chat-name">{{this.sender}}</span>
+                                           <br>
+                                           {{#if this.message}}
+                                                {{this.message}}
+                                                {{else}}
+                                                <img src="../uploads/{{this.image}}" width="100px" height="100px">
+                                           {{/if}}
+                                          
+                                       </div>
+                                    </li>
+                                  <a href="/home/{{this._id}}">Comments</a>
+                                  {{/each}}
+                                </ul>
+                                
+                            </div>
+                            
+                            <div class="message_write"><div>
                     {{#each resl}}
                     <div class="category-list">
                         <div class="row ">
@@ -34,38 +71,6 @@
                     </div>
                     {{/each}}
     </div>
-    <div class="col-sm-5 col-md-6 message_section">
-                        <div class="row">
-                            <div class="new_message_head">
-                                <div class="pull-left">
-                                <button class="club_name">
-                                  POSTS
-                                </button>
-                                </div>
-                                <div class="pull-right">
-                                </div>
-                            </div>
-
-                            <div id="chat_area" class="chat_area">
-                              <ul id="messages" class = "list-unstyled">
-                                  {{#each feed}}
-                                  <li class="left">
-                                       <span class="chat-img1 pull-left">
-                                           <img src="" class="img-circle" alt="">
-                                       </span>
-                                       <div class="chat-body1">
-                                           <span class="chat-name">{{this.sender}}</span>
-                                           <br>
-                                          {{this.message}}
-                                       </div>
-                                    </li>
-                                  <a href="/home/{{this._id}}">Comments</a>
-                                  {{/each}}
-                                </ul>
-                                
-                            </div>
-                            
-                            <div class="message_write">
                               <form  id="message-form" method="post">
                                   <input type="hidden" id="groupName" value="{{groupName}}">
                                   <input type="hidden" name ="sender" id="sender" value="{{user.username}}">

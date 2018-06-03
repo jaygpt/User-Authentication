@@ -1,0 +1,373 @@
+
+<div class="bon" id="app-growl"></div>
+
+{{!-- <nav class="ck pt adq py tk app-navbar">
+
+  <a class="e" href="index.html">
+    <img src="assets/img/brand-white.png" alt="brand">
+  </a>
+
+  <button
+    class="pp bpn vm" 
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarResponsive"
+    aria-controls="navbarResponsive"
+    aria-expanded="false"
+    aria-label="Toggle navigation">
+    <span class="pq"></span>
+  </button>
+
+  <div class="collapse f" id="navbarResponsive">
+    <ul class="navbar-nav ahq">
+      <li class="pi active">
+        <a class="pg" href="index.html">Home <span class="adt">(current)</span></a>
+      </li>
+      <li class="pi">
+        <a class="pg" href="profile/index.html">Profile</a>
+      </li>
+      <li class="pi">
+        <a class="pg" data-toggle="modal" href="#msgModal">Messages</a>
+      </li>
+      <li class="pi">
+        <a class="pg" href="docs/index.html">Docs</a>
+      </li>
+
+      <li class="pi vm">
+        <a class="pg" href="notifications/index.html">Notifications</a>
+      </li>
+      <li class="pi vm">
+        <a class="pg" data-action="growl">Growl</a>
+      </li>
+      <li class="pi vm">
+        <a class="pg" href="login/index.html">Logout</a>
+      </li>
+
+    </ul>
+
+    <form class="nn acx d-none vt">
+      <input class="form-control" type="text" data-action="grow" placeholder="Search">
+    </form>
+
+    <ul id="#js-popoverContent" class="nav navbar-nav acx aek d-none vt">
+      <li class="pi">
+        <a class="g pg" href="notifications/index.html">
+          <span class="h azy"></span>
+        </a>
+      </li>
+      <li class="pi afb">
+        <button class="cg bpo bpp boi" data-toggle="popover">
+          <img class="us" src="assets/img/avatar-dhg.png">
+        </button>
+      </li>
+    </ul>
+
+    <ul class="nav navbar-nav d-none" id="js-popoverContent">
+      <li class="pi"><a class="pg" href="#" data-action="growl">Growl</a></li>
+      <li class="pi"><a class="pg" href="login/index.html">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+ --}}
+
+<div class="cd fade" id="msgModal" tabindex="-1" role="dialog" aria-labelledby="bpq" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="d">
+        <h5 class="modal-title">Messages</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </div>
+
+
+
+
+      <div class="modal-body afx js-modalBody">
+        <div class="axw">
+          <div class="bow cj ca js-msgGroup">
+            <a href="#" class="b rx">
+              <div class="rv">
+                <img class="us bos vb yb aff" src="assets/img/avatar-fat.jpg">
+                <div class="rw">
+                  <strong>Jacob Thornton</strong> and <strong>1 other</strong>
+                  <div class="bpg">
+                    Aenean eu leo quam. Pellentesque ornare sem lacinia quam &hellip;
+                  </div>
+                </div>
+              </div>
+            </a>
+            
+        </div>
+          <div class="d-none afc js-conversation">
+            <ul class="bow bpc">
+              <li class="rv bpf afo">
+                <div class="rw">
+                  <div class="bpd">
+                    Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nulla vitae elit libero, a pharetra augue. Maecenas sed diam eget risus varius blandit sit amet non magna. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Sed posuere consectetur est at lobortis.
+                  </div>
+                  <div class="bpe">
+                    <small class="axc">
+                      <a href="#">Dave Gamache</a> at 4:20PM
+                    </small>
+                  </div>  
+                </div>
+                <img class="us bos vb yb afi" src="assets/img/avatar-dhg.png">
+              </li>
+            </ul>
+          </div>
+
+
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="cd fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="bpr" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="d">
+        <h4 class="modal-title">Users</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </div>
+
+      <div class="modal-body afx">
+        <div class="axw">
+          <ul class="bow cj ca">
+            <li class="b">
+              <div class="rv ady">
+                <img class="bos vb yb aff" src="assets/img/avatar-fat.jpg">
+                <div class="rw">
+                  <button class="cg ns ok acx">
+                    <span class="c bps"></span> Follow
+                  </button>
+                  <strong>Jacob Thornton</strong>
+                  <p>@fat - San Francisco</p>
+                </div>
+              </div>
+            </li>
+            <li class="b">
+              <div class="rv ady">
+                <img class="bos vb yb aff" src="assets/img/avatar-dhg.png">
+                <div class="rw">
+                  <button class="cg ns ok acx">
+                    <span class="c bps"></span> Follow
+                  </button>
+                  <strong>Dave Gamache</strong>
+                  <p>@dhg - Palo Alto</p>
+                </div>
+              </div>
+            </li>
+            <li class="b">
+              <div class="rv ady">
+                <img class="bos vb yb aff" src="assets/img/avatar-mdo.png">
+                <div class="rw">
+                  <button class="cg ns ok acx">
+                    <span class="c bps"></span> Follow
+                  </button>
+                  <strong>Mark Otto</strong>
+                  <p>@mdo - San Francisco</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="by aha ahl">
+  <div class="dp">
+    <div class="fj">
+      <div class="pz bpi afo">
+        <div class="qf" style="background-image: url(assets/img/iceland.jpg);"></div>
+        <div class="qa avz">
+          <a href="profile/index.html">
+            <img
+              class="bpj"
+              src="assets/img/avatar-dhg.png">
+          </a>
+
+          <h6 class="qb">
+            <a class="boa" href="profile/index.html">Dave Gamache</a>
+          </h6>
+
+          <p class="afo">I wish i was a little bit taller, wish i was a baller, wish i had a girl… also.</p>
+
+          <ul class="bpk">
+            <li class="bpl">
+              <a href="#userModal" class="boa" data-toggle="modal">
+                Friends
+                <h6 class="aej">12M</h6>
+              </a>
+            </li>
+
+            <li class="bpl">
+              <a href="#userModal" class="boa" data-toggle="modal">
+                Enemies
+                <h6 class="aej">1</h6>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pz vp vy afo">
+        <div class="qa">
+          <h6 class="afh">About <small>· <a href="#">Edit</a></small></h6>
+          <ul class="dc axg">
+            <li><span class="axc h ban aff"></span>Went to <a href="#">Oh, Canada</a>
+            <li><span class="axc h bnc aff"></span>Became friends with <a href="#">Obama</a>
+            <li><span class="axc h bfa aff"></span>Worked at <a href="#">Github</a>
+            <li><span class="axc h bfq aff"></span>Lives in <a href="#">San Francisco, CA</a>
+            <li><span class="axc h bgz aff"></span>From <a href="#">Seattle, WA</a>
+          </ul>
+        </div>
+      </div>
+
+       <div class="pz vp vy afo">
+        <div class="qa">
+          <h6 class="afh">Photos <small>· <a href="#">Edit</a></small></h6>
+          <div data-grid="images" data-target-height="150">
+            <div>
+              <img data-width="640" data-height="640" data-action="zoom" src="assets/img/instagram_5.jpg">
+            </div>
+
+            <div>
+              <img data-width="640" data-height="640" data-action="zoom" src="assets/img/instagram_6.jpg">
+            </div>
+
+            <div>
+              <img data-width="640" data-height="640" data-action="zoom" src="assets/img/instagram_7.jpg">
+            </div>
+
+            <div>
+              <img data-width="640" data-height="640" data-action="zoom" src="assets/img/instagram_8.jpg">
+            </div>
+
+            <div>
+              <img data-width="640" data-height="640" data-action="zoom" src="assets/img/instagram_9.jpg">
+            </div>
+
+            <div>
+              <img data-width="640" data-height="640" data-action="zoom" src="assets/img/instagram_10.jpg">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fm">
+
+      <ul class="ca bow box afo">
+
+        <li class="rv b agz">
+          
+          <form class="form-control" id="message-form" method="post">
+              <input type="hidden" name ="sender" id="sender" value="{{user.username}}">
+              <textarea class="form-control" name="message" id="msg" placeholder="Type a message"></textarea>
+                          <!input type="file" name="filename" id="file" class="custom-file-input">
+              <div class="clearfix"></div>
+              <div class="chat_bottom">
+              <button id="send-message" class="pull-right btn btn-primary" style="background: #4aa1f3; border: #4aa1f3; ">
+                POST
+              </button>
+              </div>
+          </form>
+          
+          
+        </li>
+        <li>
+          <div class="form-control">
+            <form enctype="multipart/form-data" method="POST">
+            <input type="file" name="filename" id="file">
+            <button id="send-messages" class="pull-right btn btn-primary" style="background: #4aa1f3; border: #4aa1f3; ">
+                submit
+              </button>
+          </form>
+          </div>
+        </li>
+        {{#each feed}}
+          <li class="rv b agz">
+          <img
+            class="bos vb yb aff"
+            src="assets/img/avatar-dhg.png">
+          <div class="rw">
+            <div class="bpb">
+              <h6>{{this.sender}}</h6>
+            </div>
+            <p>
+              {{#if this.message}}
+              {{this.message}}
+              {{/if}}
+            </p>
+            {{#if this.image}}
+            <div class="boy" data-grid="images">
+              <div style="display: none">
+                <img data-action="zoom" data-width="1050" data-height="700" src="../uploads/{{this.image}}">
+              </div>
+            </div>
+            {{/if}}
+          </div>
+          <ul class="bow afa">
+              <li class="rv afh">
+                <a href="/home/{{this._id}}">Comments</a>
+
+              </li>            
+          </ul>
+
+
+        {{/each}}
+
+        
+      </ul>
+    </div>
+    <div class="fj">
+      <div class="alert ro alert-dismissible d-none vy" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <a class="rj" href="profile/index.html">Visit your profile!</a> Check your self, you aren't looking well.
+      </div>
+
+      <div class="pz afo d-none vy">
+        <div class="qa">  
+        <h6 class="afh">Likes <small>· <a href="#">View All</a></small></h6>
+        <ul class="bow box">
+          {{#each clubs}}
+           <li class="rv">
+            <a class="bpu" href="#">
+              <img
+                class="bos vb yb aff"
+                src="http://icons.iconarchive.com/icons/3xhumed/tools-hardware-pack-3/256/Club-3D-Grafikcard-Tray-icon.png">
+            </a>
+            <div class="rw">
+              <strong>{{this.name}}</strong>
+              <div class="bpa">
+                <a href="/group/{{this.name}}">
+                  <button class="cg nz ok">
+                  <span class="h ayi" ></span> Open Chat</button>
+                </a>
+                
+              </div>
+            </div>
+            </li>
+            {{/each}}
+
+        </ul>
+        </div>
+        <div class="qg">
+          These are clubs which you follows.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/chart.js"></script>
+    <script src="/js/toolkit.js"></script>
+    <script src="/js/application.js"></script>

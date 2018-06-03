@@ -41,6 +41,7 @@ router.get('/',ensureAuthentication,(req,res) => {
                         }
                 }
         }
+    
 })
     res.render('private/chat',{alluser: alluser});
 })
@@ -103,7 +104,7 @@ router.get('/:link/',ensureAuthentication,(req,res) => {
 
     ])
     .then((found) => {
-        //console.log(found);
+        console.log(found);
     })
     //{$and:[{'senderName': req.user.username},{'receiverName': req.user.username}]}
     Message.find({ $or : [

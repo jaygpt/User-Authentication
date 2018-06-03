@@ -20,7 +20,7 @@ router.get('/',ensureAuthentication,(req,res) => {
     var resl = [];
         club.find({})
                 .then((found) => {
-                //console.log(found);
+                console.log(found);
                 for(let i = 0 ; i<found.length ; i++)
                     {
                         for(let j = 0; j<found[i].fans.length ; j++)
@@ -41,14 +41,27 @@ router.get('/:name',ensureAuthentication,function(req,res){
     var message = [];
     club.findOne({name: groupname})
                 .then((found) => {
+                    var myname = req.user.username;
                 for(let i =0;i<found.post.length;i++)
                     {
                         //console.log(found.post[i]);
-                        var obj = found.post[i];
+                        var isTrue = true;
+                        if(found.post[i].sender === myname)
+                        {
+                            isTrue = false;
+                        }
+                        console.log(isTrue);
+                        var obj = { 
+                            image: found.post[i].image,
+                            isUser: isTrue,
+                            _id: found.post[i]._id,
+                            sender: found.post[i].sender,
+                            message: found.post[i].message
+                         }
                         message.push(obj);
                     }
+                    console.log(message);
             })
-    //console.log(message);
     res.render('groupchat/groupchat', {groupName:groupname, message: message});
 });
 router.get('/:gname/fileupload/:uname',ensureAuthentication,function(req,res){

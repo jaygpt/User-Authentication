@@ -4,23 +4,83 @@ var User = require('./users');
 var async = require('async');
 var Club = require('../models/club.js');
 var department_feed = require('../models/department_feed');
+var multer = require('multer');
+var path = require('path');
 
-var bodyParser = require('body-parser');
+const storage = multer.diskStorage({
+    destination: './public/uploads/',
+    filename: function(req, file, cb){
+      cb(null,file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+    }
+  });
+const upload = multer({
+      storage: storage
+      //for other condition of limits thus in this class wes
+  }).single('filename');
+
+/* router.get('/:uname/fileupload',ensureAuthentication,function(req,res){
+    res.render('fileupload');
+});
+router.post('/:uname/fileupload',ensureAuthentication,function(req,res){
+    var username = req.params.uname;
+    upload(req,res,(err) => {
+        if(err){
+            res.render('index',{msg: err});
+        }
+        else{
+            if(req.file !== undefined){
+    console.log(req.file.filename);
+                
+                department_feed.findOne({department:req.user.department})
+            .then((mydepartment) => {
+                var newimg = {
+                    sender: username,
+                    message: null,
+                    image: req.file.filename
+                }
+                mydepartment.feeds.push(newimg);
+                mydepartment.save();
+            })
+            console.log(req.file);
+            }
+            else{
+                console.log('shikha hates you');
+            }
+        }
+    })
+    res.redirect('../');
+});
+
+ */
 router.get('/',ensureAuthentication,function(req,res){
         //console.log('MAY' + User.myname());
-        
+        var clubs = [];
+        Club.find({})
+                .then((found) => {
+                //console.log(found);
+                for(let i = 0 ; i<found.length ; i++)
+                    {
+                        for(let j = 0; j<found[i].fans.length ; j++)
+                            {
+                                if(found[i].fans[j].username  == req.user.username)
+                                    {
+                                        clubs.push(found[i]);
+                                    }
+                            }
+                    }                
+    })
     var feed = [];
             department_feed.findOne({department: User.mydepartment()})
                 .then((news) => {
                 if(news === null){
-                    res.render('dashboard');
+                    res.render('dashboards');
                 }else{
-                for(let j = 0; j<news.feeds.length;j++)
+                for(let j = news.feeds.length - 1; j>= 0;j--)
                     {
                         feed.push(news.feeds[j]);
                     }
-                    console.log(feed);
-                    res.render('dashboard', {title: 'Portal', feed: feed});
+                    //console.log(feed);
+                    res.render('dashboards', {title: 'Portal',clubs: clubs, feed: feed});
                 }
             })
 });
@@ -72,13 +132,43 @@ router.post('/:id',function(req,res){
 
 router.post('/',function(req,res){
     var msg = req.body.message;
+    console.log(msg);
+    var username = req.body.sender;
     //console.log(msg);
     //console.log(User.mydepartment());
-    department_feed.findOne({department: User.mydepartment()})
+    upload(req,res,(err) => {
+        if(err){
+            res.render('index',{msg: err});
+        }
+        else{
+            if(req.file !== undefined){
+                department_feed.findOne({department:User.mydepartment()})
+                .then((mydepartment) => {
+                var post = {
+                    sender: User.myname(),
+                    message: null,
+                    image: req.file.filename
+                }
+                if(mydepartment === null)
+                            {
+                                var dep = new department_feed();
+                                dep.department = User.mydepartment();
+                                dep.feeds.push(post);
+                                dep.save();
+                            }else{
+                                mydepartment.feeds.push(post);
+                                mydepartment.save();
+                            }
+            })
+            console.log(req.file);
+            }
+            else{
+                department_feed.findOne({department: User.mydepartment()})
                 .then((news) => {
                         var post = {
                         sender: User.myname(),
-                        message: msg
+                        message: msg,
+                        image: null
                         }
                         if(news === null)
                             {
@@ -91,6 +181,10 @@ router.post('/',function(req,res){
                                 news.save();
                             }
             })
+            }
+        }
+    })
+        
     res.redirect('/home');
 });
 

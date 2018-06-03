@@ -69,19 +69,37 @@ router.post('/save',(req,res) => {
     console.log('ss');
     async.parallel([
          function(callback){
-             Club.update({
-                 '_id': req.body.id,
-                 'fans.username' : {$ne : req.body.name}
-             }, {
-                 $push : {fans:{
-                    username : req.user.username,
-                     email :req.user.email
-                 }
-                 }
-             },(err,count) => {
-                 console.log(count);
-                 callback(err,count);
-             });
+             var flag = 1;
+             Club.findOne({_id: req.body.id})
+                .then((found) => {
+                    for(let i = 0; i<found.fans.length ;i++)
+                    {
+                        if(found.fans[i].username === req.user.username){
+                            console.log('false');
+                            flag = 0;
+                            break;
+                        } 
+                    }
+                    if(flag === 1){
+                        Club.update({
+                            '_id': req.body.id,
+                            'fans.username' : {$ne : req.body.name}
+                        }, {
+                            $push : {fans:{
+                               username : req.user.username,
+                                email :req.user.email
+                            }
+                            }
+                        },(err,count) => {
+                            console.log(count);
+                            callback(err,count);
+                        });
+                       }
+                       else{
+                           res.redirect('/admin');
+                       }
+                })
+                
          }
     ],(err,results) => {
         res.redirect('/admin');

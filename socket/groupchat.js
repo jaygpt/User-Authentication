@@ -19,7 +19,7 @@ module.exports = function(io, Users){
                 .then((found) => {
                 found.post.push({sender: message.sender,message: message.text});
                 found.save();
-                console.log(found);
+                //console.log(found);
             })
              //we will use high promise here
             

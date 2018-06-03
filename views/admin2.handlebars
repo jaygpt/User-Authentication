@@ -5,73 +5,209 @@
             <input type="text" name="club" placeholder = "Club name">
         </div>
       </div>
+<head>
+    <link href="/css/toolkit.css" rel="stylesheet">
+</head>
         <div>
         <input type="text" name="position" placeholder = "Position">
     </div>
         <button type = "submit">Add Club</button>
     </form>
 -->
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+<style>
+.vy{
+  background-color: antiquewhite;
+  width: 200%; 
+}
+
+
+</style>
   
-  <title>Node File Uploads</title>
-</head>
-<body>
-  <div class="container">
-    <h1>File Upload</h1>
-    <form action="/admin" method="POST" enctype="multipart/form-data">
-        <div class="file-field input-field">
-        <div class="file-path-wrapper">
-            <input type="text" name="club" placeholder = "Club name">
+<div class="by aha ahl">
+  <div class="dp">
+    <div class="fj">
+      
+    </div>
+    </div>
+</div>
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src="/js/club.js"></script>
+
+<div class="bon" id="app-growl"></div>
+
+<div class="cd fade" id="msgModal" tabindex="-1" role="dialog" aria-labelledby="bpq" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="d">
+        <h5 class="modal-title">Messages</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </div>
+      <div class="modal-body afx js-modalBody">
+        <div class="axw">
+          <div class="bow cj ca js-msgGroup">
+            <a href="#" class="b rx">
+              <div class="rv">
+                <img class="us bos vb yb aff" src="assets/img/avatar-fat.jpg">
+                <div class="rw">
+                  <strong>Jacob Thornton</strong> and <strong>1 other</strong>
+                  <div class="bpg">
+                    Aenean eu leo quam. Pellentesque ornare sem lacinia quam &hellip;
+                  </div>
+                </div>
+              </div>
+            </a>
+            
+        </div>
+          <div class="d-none afc js-conversation">
+            <ul class="bow bpc">
+              <li class="rv bpf afo">
+                <div class="rw">
+                  <div class="bpd">
+                    Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nulla vitae elit libero, a pharetra augue. Maecenas sed diam eget risus varius blandit sit amet non magna. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Sed posuere consectetur est at lobortis.
+                  </div>
+                  <div class="bpe">
+                    <small class="axc">
+                      <a href="#">Dave Gamache</a> at 4:20PM
+                    </small>
+                  </div>  
+                </div>
+                <img class="us bos vb yb afi" src="assets/img/avatar-dhg.png">
+              </li>
+            </ul>
+          </div>
+
+
+
+
+
         </div>
       </div>
-        <div>
-        <input type="text" name="position" placeholder = "Position">
-        <input type="hidden" name ="name" id="name" value="{{user.username}}">
-        </div>
-      <button type="submit" class="btn">Submit by {{user.username}}</button>
-    </form>
-    <br>
+    </div>
   </div>
-<div>
-                    {{#each resl}}
-                    <div class="category-list">
-                        <div class="row ">
-                            <form action="/admin/save" method="post" id="favor">
-                                <div class="item col-md-4">
-                                    <div class="thumbnail">
-                                       <img alt="">
-                                        <div class="caption">
-                                            <h4>{{this.name}}</h4> 
-                                            <div class="row">
-                                                <div class="col-xs-12 col-md-6">
-                                                    <p>
-                                                        Total people in Club are {{this.fans.length}}
-                                                    </p>
-                                                </div>
-                                                <div class="col-xs-12 col-md-6">
+</div>
+
+<div class="by aha ahl">
+  <div class="dp">
+    <div class="fm">
+
+      <ul class="ca bow box afo">
+
+        <li class="rv b agz">
+          
+          <form action="/admin" method="POST" enctype="multipart/form-data">
+  <div class="form-group">
+    <label for="exampleFormControlInput1">What's should we call you...</label>
+    <input type="text" name="club" placeholder = "Club name">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Group Type</label>
+    <select class="form-control" id="exampleFormControlSelect1" name="grouptype">
+      <option>Course group</option>
+      <option>Gymkhana Club</option>
+      <option>Own Project</option>
+      <option>Free Lancers group</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Discription</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="discription"></textarea>
+  </div>
+  <div>
+    <button>
+      Submit
+    </button>
+  </div>
+</form>
+        {{#each feed}}
+          <li class="rv b agz">
+          <img
+            class="bos vb yb aff"
+            src="assets/img/avatar-dhg.png">
+          <div class="rw">
+            <div class="bpb">
+              <h6>{{this.sender}}</h6>
+            </div>
+            <p>
+              {{#if this.message}}
+              {{this.message}}
+              {{/if}}
+            </p>
+            {{#if this.image}}
+            <div class="boy" data-grid="images">
+              <div style="display: none">
+                <img data-action="zoom" data-width="1050" data-height="700" src="../uploads/{{this.image}}">
+              </div>
+            </div>
+            {{/if}}
+          </div>
+          <ul class="bow afa">
+              <li class="rv afh">
+                <a href="/home/{{this._id}}">Comments</a>
+
+              </li>            
+          </ul>
+
+
+        {{/each}}
+
+        
+      </ul>
+    </div>
+    <div class="fj">
+      <div class="alert ro alert-dismissible d-none vy" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <a class="rj" href="profile/index.html">Visit your profile!</a> Check your self, you aren't looking well.
+      </div>
+
+      <div class="pz afo d-none vy">
+        <div class="qa">  
+        <h6 class="afh">Likes <small>· <a href="#">View All</a></small></h6>
+        <ul class="bow box">
+          {{#each resl}}
+           <li class="rv">
+            <a class="bpu" href="#">
+              <img
+                class="bos vb yb aff"
+                src="http://icons.iconarchive.com/icons/3xhumed/tools-hardware-pack-3/256/Club-3D-Grafikcard-Tray-icon.png">
+            </a>
+            <div class="rw">
+              <strong>{{this.name}}</strong>
+              <div class="bpa">
+                              <p> Total people in Club are {{this.fans.length}}</p>
+                {{!-- <a href="/group/{{this.name}}">
+                  <button class="cg nz ok">
+                  <span class="h ayi" ></span> Open Chat</button>
+                </a> --}}
+                <form action="/admin/save" method="post">
+                    <div class="col-xs-12 col-md-6">
                                                 <input type="hidden" name ="id" id="id" value="{{this._id}}">
                                                 <input type="hidden" name ="clubName" id="club_name" value="{{this.name}}">    
                                                     <button class="btn add-fav" type="submit">
                                                         Add To Favorite
                                                     </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    {{/each}}
+                    </div>    
+                </form>
+                
+              </div>
+            </div>
+            </li>
+            {{/each}}
+
+        </ul>
+        </div>
+        <div class="qg">
+          These are clubs which you follows.
+        </div>
+      </div>
     </div>
-  <script
-  src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-    <script src="/js/club.js"></script>
-</body>
-</html>
+  </div>
+</div>
+
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/chart.js"></script>
+    <script src="/js/toolkit.js"></script>
+    <script src="/js/application.js"></script>
