@@ -1,0 +1,15 @@
+<h1>All Posts</h1>
+{{#each posts}}
+<div class="list-group" style="background-color:gray; border-radius:10px;">
+    <div style="padding:10px; color:white">
+  
+    <h4 class="list-group-item-heading">{{course}}<a href="/admin/posts/edit/{{id}}" style="color:white"><i class="fa fa-pencil-square-o" aria-hidden="true" style="float:right"></i></a>
+    </h4>
+    <form action="/admin/posts/{{id}}?_method=DELETE" method="post"><button class="btn" style="float:right"><i class="fa fa-trash"></i></button></form>
+    <p class="list-group-item-text">{{comment}}</p>
+    <img src="/uploads/{{file}}" width="200px" height="200px">
+    </div>
+  
+</div>
+<br />
+{{/each}}

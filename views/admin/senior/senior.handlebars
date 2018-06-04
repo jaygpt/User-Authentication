@@ -1,0 +1,61 @@
+<link href='https://fonts.googleapis.com/css?family=Alef' rel='stylesheet'>
+<h1 style="font-family:jokerman; color:#555555">Coordinators</h1>
+<div style="display:block; align-items:center">
+{{#each result}}
+{{#isequal this.profile.position "coordinator"}}
+<a href="/admin/seniors/show/{{this._id}}" style="color:black">
+<div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin:10px;
+  align-content:center;
+  text-align: center;
+  font-family: arial;
+  float: left;">
+  <img src="/uploads/{{this.profile.image}}" alt="" width="200px" height="250px" style="border-radius:100px; margin:10px 20px;">
+  <h2 style="text-transform:uppercase; font-family:Alef; opacity: 0.8;">{{this.firstName}}</h2>
+  <p style="color: grey;
+  font-size: 18px;">{{this.profile.bio}}</p>
+  <div style="margin: 10px 0;">
+    <a href="#" style="text-decoration: none;
+  font-size: 18px;
+  color: black;"><i class="fa fa-envelope">&nbsp;&nbsp;{{this.email}}</i></a> 
+ </div>
+ <p><button style="border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color:grey;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;">{{this.profile.club}}</button></p>
+</div>
+</a>
+{{/isequal}}
+{{/each}}
+</div>
+<h1 style="clear:both; font-family:jokerman;color:#777777">Secretary</h1>
+<div style="">
+{{#each result}}
+{{#isequal this.profile.position "secretary"}}
+<div>
+<a href="/admin/seniors/show/{{this._id}}" style="float:left; text-align:center; text-transform:uppercase; margin:10px 30px 30px 10px">
+<img src="/uploads/{{this.profile.image}}" height="100px" width="100px" style="border-radius:50px;">
+<h5 style="color:black">{{this.firstName}} </h5>
+<h5 style="color:grey">({{this.profile.bio}})</h5>
+</a>
+</div>
+{{/isequal}}
+{{/each}}
+</div>
+<h1 style="clear:both; font-family:jokerman; color:silver">Members</h1>
+{{#each result}}
+{{#isequal this.profile.position "member"}}
+<div>
+    <a href="/admin/seniors/show/{{this._id}}" style="color:black">
+    <h5><span style="font-weight:bold; text-transform:uppercase">{{this.firstName}}</span> ({{this.profile.project}})</h5>
+    </a>
+</div>
+{{/isequal}}
+{{/each}}

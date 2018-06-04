@@ -137,7 +137,7 @@
           <ul class="bow cj ca">
             <li class="b">
               <div class="rv ady">
-                <img class="bos vb yb aff" src="assets/img/avatar-fat.jpg">
+                <img class="bos vb yb aff" src="/uploads/{{user.profile.image}}">
                 <div class="rw">
                   <button class="cg ns ok acx">
                     <span class="c bps"></span> Follow
@@ -188,27 +188,20 @@
           <a href="profile/index.html">
             <img
               class="bpj"
-              src="assets/img/avatar-dhg.png">
+              src="/uploads/{{user.profile.image}}">
           </a>
 
           <h6 class="qb">
-            <a class="boa" href="profile/index.html">Dave Gamache</a>
+            <a class="boa" href="profile/index.html">{{user.name}}</a>
           </h6>
 
-          <p class="afo">I wish i was a little bit taller, wish i was a baller, wish i had a girl… also.</p>
+          <p class="afo">{{user.profile.bio}}</p>
 
           <ul class="bpk">
             <li class="bpl">
               <a href="#userModal" class="boa" data-toggle="modal">
-                Friends
-                <h6 class="aej">12M</h6>
-              </a>
-            </li>
-
-            <li class="bpl">
-              <a href="#userModal" class="boa" data-toggle="modal">
-                Enemies
-                <h6 class="aej">1</h6>
+                {{user.profile.club}}
+                <h6 class="aej">{{user.profile.position}}</h6>
               </a>
             </li>
           </ul>
@@ -219,43 +212,15 @@
         <div class="qa">
           <h6 class="afh">About <small>· <a href="#">Edit</a></small></h6>
           <ul class="dc axg">
-            <li><span class="axc h ban aff"></span>Went to <a href="#">Oh, Canada</a>
-            <li><span class="axc h bnc aff"></span>Became friends with <a href="#">Obama</a>
-            <li><span class="axc h bfa aff"></span>Worked at <a href="#">Github</a>
-            <li><span class="axc h bfq aff"></span>Lives in <a href="#">San Francisco, CA</a>
-            <li><span class="axc h bgz aff"></span>From <a href="#">Seattle, WA</a>
+            {{#if user.profile.project}}
+            <li><span class="axc h ban aff"></span>Ongoing Projects: <a href="#"> {{user.profile.project}}</a>
+            {{/if}}
+            {{#if user.profile.intern}}
+            <li><span class="axc h bfa aff"></span>Internship: <a href="#"> {{user.profile.intern}}</a>
+            {{/if}}
+            <li><span class="axc h bfq aff"></span>Lives in <a href="#">{{user.profile.room}}</a>
+            <li><span class="axc h bgz aff"></span>From <a href="#">India</a>
           </ul>
-        </div>
-      </div>
-
-       <div class="pz vp vy afo">
-        <div class="qa">
-          <h6 class="afh">Photos <small>· <a href="#">Edit</a></small></h6>
-          <div data-grid="images" data-target-height="150">
-            <div>
-              <img data-width="640" data-height="640" data-action="zoom" src="assets/img/instagram_5.jpg">
-            </div>
-
-            <div>
-              <img data-width="640" data-height="640" data-action="zoom" src="assets/img/instagram_6.jpg">
-            </div>
-
-            <div>
-              <img data-width="640" data-height="640" data-action="zoom" src="assets/img/instagram_7.jpg">
-            </div>
-
-            <div>
-              <img data-width="640" data-height="640" data-action="zoom" src="assets/img/instagram_8.jpg">
-            </div>
-
-            <div>
-              <img data-width="640" data-height="640" data-action="zoom" src="assets/img/instagram_9.jpg">
-            </div>
-
-            <div>
-              <img data-width="640" data-height="640" data-action="zoom" src="assets/img/instagram_10.jpg">
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -292,9 +257,11 @@
         </li>
         {{#each feed}}
           <li class="rv b agz">
+            {{#if this.userimage}}
           <img
             class="bos vb yb aff"
-            src="assets/img/avatar-dhg.png">
+            src="/uploads/{{user.profile.image}}">
+            {{/if}}
           <div class="rw">
             <div class="bpb">
               <h6>{{this.sender}}</h6>

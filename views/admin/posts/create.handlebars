@@ -1,0 +1,24 @@
+<h1>Create post</h1>
+<img src="http://1.bp.blogspot.com/_HR3JtqIfTiE/Sbx09kdIODI/AAAAAAAAA6k/1_HyxAZ38h0/s400/Albert+Einstein.jpg" alt="Cinque Terre" width="400px" height="400px" style="float:left">
+ <form action="/admin/posts/create" method="post" enctype="multipart/form-data" style="float:left; margin-left:60px">
+        <div class="form-group">
+            <label for="course" class="col-sm-2 col-form-label">Course</label>
+            <div>
+                <input type="text" name="course" class="form-control" id="course" placeholder="Course">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="comment" class="col-sm-2 col-form-label">Comments</label>
+            <div>
+                <textarea type="text" cols="30" rows="8" name="comment" class="form-control" id="comment" placeholder="Enter Description"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="file" class="col-sm-2 col-form-label">Attach&nbsp;File</label>
+            <div>
+                <input type="file" name="file" class="form-control" id="file">
+            </div>
+        </div>
+
+        <button class="btn btn-primary">Submit</button>
+</form>

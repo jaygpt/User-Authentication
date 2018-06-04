@@ -10,15 +10,14 @@
   <title>Departmental Portal</title>
   <!-- Bootstrap core CSS-->
   <link href="/css/bootstrap.min.css" rel="stylesheet">
-  <link href="/css/blog-home.css" rel="stylesheet" type="text/css">
-{{!--     <link href="/css/toolkit.css" rel="stylesheet">
+    <link href="/css/toolkit.css" rel="stylesheet">
   
   <!-- Custom fonts for this template-->
   <link href="/css/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <!-- Custom styles for this template-->
   <link href="/css/sb-admin.css" rel="stylesheet">
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
-  <link href="/css/application.css" rel="stylesheet">   --}}
+  <link href="/css/application.css" rel="stylesheet">  
     <style>
       /* note: this is a hack for ios iframe for bootstrap themes shopify page */
       /* this chunk of css is not part of the toolkit :) */
@@ -30,7 +29,7 @@
     </style>
 </head>
 
-<body>
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
     <a class="navbar-brand" href="/home">Departmental Portal</a>
@@ -41,6 +40,8 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+        
+        {{#if user}}
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
           <a class="nav-link" href="/home">
             <i class="fa fa-fw fa-dashboard"></i>
@@ -48,6 +49,21 @@
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-file"></i>
+            <span class="nav-link-text">Profiles</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="collapseExamplePages">
+            <li>
+              <a href="/profile/">Own Profile</a>
+            </li>
+            <li>
+              <a href="/profile/seniors">Find Ur Senior</a>
+            </li>
+          </ul>
+        </li>
+        {{else}}
+          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-file"></i>
             <span class="nav-link-text">Authentication</span>
@@ -62,11 +78,9 @@
             <li>
               <a href="forgot-password.html">Forgot Password Page</a>
             </li>
-            <li>
-              <a href="blank.html">Blank Page</a>
-            </li>
           </ul>
         </li>
+        {{/if}}
         {{#if user}}
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti" data-parent="#exampleAccordion">
@@ -158,7 +172,7 @@
         </li>
     {{#if user}}        
         <li class="nav-item">
-          <a class="nav-link" href="/users/logout">
+          <a class="nav-link" {{!--data-toggle="modal"  data-target="#exampleModal" --}} href="/users/logout">
             <i class="fa fa-fw fa-sign-out"></i>Logout</a>
         </li>
     {{/if}}
@@ -184,7 +198,9 @@
     {{{body}}}
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
-    <footer class="sticky-footer">
+    </div>
+    <div>
+      <footer class="sticky-footer">
       <div class="container">
         <div class="text-center">
           <small>Copyright © Your Website 2017</small>
@@ -196,7 +212,7 @@
       <i class="fa fa-angle-up"></i>
     </a>
     <!-- Logout Modal-->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal" aria-hidden="true">
+   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -206,7 +222,6 @@
             </button>
           </div>
           <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
             <a class="btn btn-primary" href="/users/logout">Logout</a>

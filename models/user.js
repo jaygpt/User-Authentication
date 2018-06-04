@@ -17,7 +17,46 @@ var UserSchema = mongoose.Schema({
 		type: String,
 	},
     department: {
+		type: String,
+		required: true
+	},
+	year:{
         type: String,
+    },
+    club:{
+        type: String
+    },
+    profile:{
+        image:{
+            type: String
+        },
+        bio:{
+            type: String
+        },
+        room:{
+            type:String
+        },
+        club:{
+            type:String
+        },
+        position:{
+            type:String
+        },
+        project:{
+            type:String
+        },
+        clubi:{
+            type:String
+        },
+        pastprojects:{
+            type:String
+        },
+        intern:{
+            type:String
+        },
+        sports:{
+            type:String
+        }
     }
 });
 

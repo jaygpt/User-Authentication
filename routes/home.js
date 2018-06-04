@@ -3,6 +3,7 @@ var router = express.Router();
 var User = require('./users');
 var async = require('async');
 var Club = require('../models/club.js');
+var user = require('../models/user.js');
 var department_feed = require('../models/department_feed');
 var multer = require('multer');
 var path = require('path');
@@ -18,40 +19,6 @@ const upload = multer({
       //for other condition of limits thus in this class wes
   }).single('filename');
 
-/* router.get('/:uname/fileupload',ensureAuthentication,function(req,res){
-    res.render('fileupload');
-});
-router.post('/:uname/fileupload',ensureAuthentication,function(req,res){
-    var username = req.params.uname;
-    upload(req,res,(err) => {
-        if(err){
-            res.render('index',{msg: err});
-        }
-        else{
-            if(req.file !== undefined){
-    console.log(req.file.filename);
-                
-                department_feed.findOne({department:req.user.department})
-            .then((mydepartment) => {
-                var newimg = {
-                    sender: username,
-                    message: null,
-                    image: req.file.filename
-                }
-                mydepartment.feeds.push(newimg);
-                mydepartment.save();
-            })
-            console.log(req.file);
-            }
-            else{
-                console.log('shikha hates you');
-            }
-        }
-    })
-    res.redirect('../');
-});
-
- */
 router.get('/',ensureAuthentication,function(req,res){
         //console.log('MAY' + User.myname());
         var clubs = [];
@@ -77,9 +44,24 @@ router.get('/',ensureAuthentication,function(req,res){
                 }else{
                 for(let j = news.feeds.length - 1; j>= 0;j--)
                     {
-                        feed.push(news.feeds[j]);
+                        var userimg = "";
+                        user.findOne({username:news.feeds[j].sender})
+                            .then((found) =>{
+                                userimg = found.profile.image;
+                                console.log(userimg);
+                            
+                        var obj = { 
+                            comments: news.feeds[j].comments,
+                            _id: news.feeds[j]._id,
+                            sender: news.feeds[j].sender,
+                            message: news.feeds[j].message,
+                            image: news.feeds[j].image,
+                            userimage : userimg
+                        }
+                        feed.push(obj);
+                    })
                     }
-                    //console.log(feed);
+                    console.log(feed);
                     res.render('dashboards', {title: 'Portal',clubs: clubs, feed: feed});
                 }
             })
@@ -132,7 +114,6 @@ router.post('/:id',function(req,res){
 
 router.post('/',function(req,res){
     var msg = req.body.message;
-    console.log(msg);
     var username = req.body.sender;
     //console.log(msg);
     //console.log(User.mydepartment());

@@ -15,6 +15,9 @@ var http = require('http');
 var {Users} = require('./helpers/UserClass');
 var user = require('./models/user');
 var hbs = require('hbs');
+const methodOverride = require('method-override');
+const upload = require('express-fileupload');
+mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/loginapp');
 var db = mongoose.connection;
 
@@ -24,43 +27,19 @@ var admin = require('./routes/admin');
 var home = require('./routes/home');
 var group = require('./routes/group');
 var chat = require('./routes/chat');
+var profile = require('./routes/profile');
 //initialising the app
 var app = express();
+//app.use(upload());
+app.use(methodOverride('_method'));
 // View Engine
 app.set('views', path.join(__dirname, 'views'));
-app.engine('handlebars', exphbs({defaultLayout:'layout'}));
+const {select,isequal} = require('./helpers/handlebar-helper');
+app.engine('handlebars',exphbs({defaultLayout: 'layout', helpers: {select:select,isequal: isequal}}));
+//app.engine('handlebars', exphbs({defaultLayou});t:'layout'}));
 // exphbs.registerPartial('partial', fs.readFileSync(__dirname + '/views/partial.hbs', 'utf8'));
 hbs.registerPartials(__dirname + '/views/partials');
-hbs.registerHelper('compare', function(lvalue, rvalue, options) {
 
-  if (arguments.length < 3)
-      throw new Error("Handlerbars Helper 'compare' needs 2 parameters");
-
-  var operator = options.hash.operator || "==";
-
-  var operators = {
-      '==':       function(l,r) { return l == r; },
-      '===':      function(l,r) { return l === r; },
-      '!=':       function(l,r) { return l != r; },
-      '<':        function(l,r) { return l < r; },
-      '>':        function(l,r) { return l > r; },
-      '<=':       function(l,r) { return l <= r; },
-      '>=':       function(l,r) { return l >= r; },
-      'typeof':   function(l,r) { return typeof l == r; }
-  }
-
-  if (!operators[operator])
-      throw new Error("Handlerbars Helper 'compare' doesn't know the operator "+operator);
-
-  var result = operators[operator](lvalue,rvalue);
-
-  if( result ) {
-      return options.fn(this);
-  } else {
-      return options.inverse(this);
-  }
-
-});
 app.set('view engine', 'handlebars');
 
 // BodyParser Middleware
@@ -120,6 +99,7 @@ app.use('/admin',admin);
 app.use('/home',home);
 app.use('/group',group);
 app.use('/chat',chat);
+app.use('/profile',profile);
 
 // Set Port
 app.set('port', (process.env.PORT || 3000));

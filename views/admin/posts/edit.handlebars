@@ -1,0 +1,18 @@
+<h1>Create post</h1>
+<img src="http://1.bp.blogspot.com/_HR3JtqIfTiE/Sbx09kdIODI/AAAAAAAAA6k/1_HyxAZ38h0/s400/Albert+Einstein.jpg" alt="Cinque Terre" width="400px" height="400px" style="float:left">
+ <form action="/admin/posts/edit/{{post.id}}?_method=PUT" method="post" style="float:left; margin-left:60px">
+        <div class="form-group">
+            <label for="course" class="col-sm-2 col-form-label">Name</label>
+            <div>
+                <input type="text" value="{{post.course}}" name="course" class="form-control" id="course" placeholder="Course">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="comment" class="col-sm-2 col-form-label">Comments</label>
+            <div>
+                <textarea type="text" cols="30" rows="8" name="comment" class="form-control" id="comment" placeholder="Enter Description">{{post.comment}}</textarea>
+            </div>
+        </div>
+
+        <button class="btn btn-primary">Submit</button>
+</form>
