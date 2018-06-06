@@ -43,7 +43,32 @@ router.get('/',ensureAuthentication,(req,res) => {
         }
     
 })
-    res.render('private/chat',{alluser: alluser});
+Message.aggregate([
+    {$match : {'receiverName': req.user.username}},
+    {$sort: {'createdAt': -1}},
+    {
+        $group: {"_id" :{
+            "last_message_between":{
+                $cond:[
+                    {
+                        $gt:[
+                            {$substr:["$senderName", 0 , 1]},
+                            {$substr: ["receiverName",0,1]}
+                        ]
+                    },
+                    {$concat: ["$senderName"," and ","$receiverName"]},
+                    {$concat: ["$receiverName"," and ","$senderName"]}
+                ]
+            }
+        }, "body" : {$first: "$$ROOT"}
+    }
+    }
+
+])
+.then((found) => {
+    res.render('private/chat',{alluser: alluser,mes: found});
+})
+    
 })
 
 router.get('/:link/',ensureAuthentication,(req,res) => {
@@ -81,8 +106,15 @@ router.get('/:link/',ensureAuthentication,(req,res) => {
     })
     var nameRegex = new RegExp("^" + req.user.username.toLowerCase(), "i");
     var noti = [];
+    Message.find({$and : [{senderName: nameParam},{receiverName: req.user.username }]})
+    .then((found) => {
+        for(let i = 0; i< found.length; i++){
+            found[i].isRead = false;
+            found[i].save();
+        }
+    })
     Message.aggregate([
-        {$match : {$or:[{'senderName': req.user.username},{'receiverName': nameParam}]}},
+        {$match : {'receiverName': req.user.username}},
         {$sort: {'createdAt': -1}},
         {
             $group: {"_id" :{
@@ -101,12 +133,12 @@ router.get('/:link/',ensureAuthentication,(req,res) => {
             }, "body" : {$first: "$$ROOT"}
         }
         }
-
+    
     ])
     .then((found) => {
         console.log(found);
-    })
     //{$and:[{'senderName': req.user.username},{'receiverName': req.user.username}]}
+    
     Message.find({ $or : [
         {$and : [{senderName: req.user.username},{receiverName: nameParam}]},
         {$and : [{senderName: nameParam},{receiverName: req.user.username }]}
@@ -114,9 +146,10 @@ router.get('/:link/',ensureAuthentication,(req,res) => {
     .sort({createdAt: 1})
     .then((result) => {
         console.log(result);
-        res.render('private/private1',{alluser: alluser, result:result});
+        res.render('private/private1',{alluser: alluser, result:result,mes: found});
     })
     //res.render('private/private1',{alluser: alluser});
+})
 });
 
 router.post('/:name/', ensureAuthentication,(req,res,next) => {

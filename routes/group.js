@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var club = require('../models/club');
+var Message = require('../models/message');
 var path = require('path');
 var multer = require('multer');
 var bodyParser = require('body-parser');
@@ -60,9 +61,34 @@ router.get('/:name',ensureAuthentication,function(req,res){
                          }
                         message.push(obj);
                     }
-                    console.log(message);
+                    //console.log(message);
             })
-    res.render('groupchat/groupchat', {groupName:groupname, message: message});
+            Message.aggregate([
+                {$match : {'receiverName': req.user.username}},
+                {$sort: {'createdAt': -1}},
+                {
+                    $group: {"_id" :{
+                        "last_message_between":{
+                            $cond:[
+                                {
+                                    $gt:[
+                                        {$substr:["$senderName", 0 , 1]},
+                                        {$substr: ["receiverName",0,1]}
+                                    ]
+                                },
+                                {$concat: ["$senderName"," and ","$receiverName"]},
+                                {$concat: ["$receiverName"," and ","$senderName"]}
+                            ]
+                        }
+                    }, "body" : {$first: "$$ROOT"}
+                }
+                }
+            
+            ])
+            .then((noti)=>{
+                console.log(noti);
+                res.render('groupchat/groupchat', {groupName:groupname, message: message, mes: noti});
+            })
 });
 router.get('/:gname/fileupload/:uname',ensureAuthentication,function(req,res){
     var groupname = req.params.gname;

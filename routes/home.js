@@ -4,6 +4,7 @@ var User = require('./users');
 var async = require('async');
 var Club = require('../models/club.js');
 var user = require('../models/user.js');
+var Message = require('../models/message.js');
 var department_feed = require('../models/department_feed');
 var multer = require('multer');
 var path = require('path');
@@ -49,20 +50,44 @@ router.get('/',ensureAuthentication,function(req,res){
                             .then((found) =>{
                                 userimg = found.profile.image;
                                 console.log(userimg);
+                            })
                             
-                        var obj = { 
-                            comments: news.feeds[j].comments,
-                            _id: news.feeds[j]._id,
-                            sender: news.feeds[j].sender,
-                            message: news.feeds[j].message,
-                            image: news.feeds[j].image,
-                            userimage : userimg
-                        }
-                        feed.push(obj);
-                    })
+                                var obj = { 
+                                    comments: news.feeds[j].comments,
+                                    _id: news.feeds[j]._id,
+                                    sender: news.feeds[j].sender,
+                                    message: news.feeds[j].message,
+                                    image: news.feeds[j].image,
+                                    userimage : userimg
+                                }
+                                feed.push(obj);
                     }
                     console.log(feed);
-                    res.render('dashboards', {title: 'Portal',clubs: clubs, feed: feed});
+                    Message.aggregate([
+                        {$match : {'receiverName': req.user.username}},
+                        {$sort: {'createdAt': -1}},
+                        {
+                            $group: {"_id" :{
+                                "last_message_between":{
+                                    $cond:[
+                                        {
+                                            $gt:[
+                                                {$substr:["$senderName", 0 , 1]},
+                                                {$substr: ["receiverName",0,1]}
+                                            ]
+                                        },
+                                        {$concat: ["$senderName"," and ","$receiverName"]},
+                                        {$concat: ["$receiverName"," and ","$senderName"]}
+                                    ]
+                                }
+                            }, "body" : {$first: "$$ROOT"}
+                        }
+                        }
+                    
+                    ])
+                    .then((noti) => {
+                        res.render('dashboards', {title: 'Portal',clubs: clubs, feed: feed, mes:noti});
+                    })
                 }
             })
 });

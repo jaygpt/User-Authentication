@@ -166,7 +166,52 @@
 
 
 
-
+<div class="cd fade" id="msgModal" tabindex="-1" role="dialog" aria-labelledby="bpq" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="d">
+        <h5 class="modal-title">Messages</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </div>
+      {{#each mes}}
+      {{#if this.body.isRead}}
+      <div class="modal-body afx js-modalBody">
+        <div class="axw">
+          <div class="bow cj ca js-msgGroup">
+            <a href="#" class="b rx">
+              <div class="rv">
+                <img class="us bos vb yb aff" src="assets/img/avatar-fat.jpg">
+                <div class="rw">
+                  <strong>Last message </strong> From:<strong>{{this.body.senderName}}</strong>
+                </div>
+              </div>
+            </a>
+            
+        </div>
+          <div class="d-none afc js-conversation">
+            <ul class="bow bpc">
+              <li class="rv bpf afo">
+                <div class="rw">
+                  <div class="bpd">
+                    {{this.body.message}}
+                  </div>
+                  <div class="bpe">
+                    <small class="axc">
+                      <a href="#">{{this.body.senderName}}</a> {{this.body.createdAt}}
+                    </small>
+                  </div>  
+                </div>
+                <img class="us bos vb yb afi" src="assets/img/avatar-dhg.png">
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      {{/if}}
+      {{/each}}
+    </div>
+  </div>
+</div>
 
 
     <div class="col-md-12">
@@ -317,81 +362,6 @@
             </div>
                         </div>
                     </div>
-
-                    
-                    {{!-- <div class="col-sm-5 col-md-6 message_section">
-                        <div class="row">
-                            <div class="new_message_head">
-                                <div class="pull-left">
-                                <button class="club_name">
-                                  {{groupName}}
-                                </button>
-                                </div>
-                                <div class="pull-right">
-                                </div>
-                            </div>
-
-                            </div>
-                            <div id="chat_area" class="chat_area">
-                              <ul id="messages" class = "list-unstyled">
-<!--
-                                  {{#each message}}
-                                  <li class="left">
-                                       <span class="chat-img1 pull-left">
-                                           <img src="" class="img-circle" alt="">
-                                       </span>
-                                       <div class="chat-body1">
-                                           <span class="chat-name">{{this.sender}}</span>
-                                           <br>
-                                          {{this.message}}
-                                       </div>
-                                    </li>
-                                  {{/each}}
--->
-                                  
-                                {{#each message}}
-                                  <div class="row">
-                                      <div class="col-sm-6">
-<div id="tb-testimonial" class="testimonial testimonial-default">
-<div class="testimonial-section">
-    
-    {{#if this.image}}
-        <img src="../uploads/{{this.image}}" width="100px" height="100px">
-    {{else}}
-        {{this.message}}
-    
-    {{/if}}
-</div>
-<div class="testimonial-desc">
-    <img src="https://placeholdit.imgix.net/~text?txtsize=9&txt=100%C3%97100&w=100&h=100" alt="" />
-    <div class="testimonial-writer">
-        <div class="testimonial-writer-name">{{this.sender}}</div>
-        <div class="testimonial-writer-designation">Front End Developer</div>
-    </div>
-</div>
-</div>   
-</div>
-                                  </div>
-                                {{/each}}
-                                </ul>    
-                            </div>                            
-                            <div class="message_write">
-                              <form  id="message-form" method="post">
-                                  <input type="hidden" id="groupName" value="{{groupName}}">
-                                  <input type="hidden" name ="sender" id="sender" value="{{user.username}}">
-                                  <textarea class="form-control" name="message" id="msg" placeholder="Type a message"></textarea>
-                                  <div>
-                                      <a href="/group/{{groupName}}/fileupload/{{user.username}}">File Upload</a>
-                                </div>
-                                  <div class="clearfix"></div>
-                                  <div class="chat_bottom">
-                                      <button id="send-message" class="pull-right btn btn-primary" style="background: #4aa1f3; border: #4aa1f3; ">
-                                          Send
-                                      </button>
-                                  </div>
-                              </form>
-                            </div>
-                        </div> --}}
                     </div>
                     <div class="col-sm-3 col-md-3 mob-50 mob-clearfix"></div>
                 </div>

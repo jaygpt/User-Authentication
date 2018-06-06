@@ -8,7 +8,7 @@ var messageSchema = mongoose.Schema({
     receiverName: {type: String},
     // this is to be done when we upload a image in user
     //userImage: {type: String, default: 'defaultPic.png'},
-    isRead: {type:Boolean, default:false},
+    isRead: {type:Boolean, default:true},
     createdAt: {type:Date, default: Date.now}
 });
 

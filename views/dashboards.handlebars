@@ -77,10 +77,8 @@
         <h5 class="modal-title">Messages</h5>
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
       </div>
-
-
-
-
+      {{#each mes}}
+      {{#if this.body.isRead}}
       <div class="modal-body afx js-modalBody">
         <div class="axw">
           <div class="bow cj ca js-msgGroup">
@@ -88,10 +86,7 @@
               <div class="rv">
                 <img class="us bos vb yb aff" src="assets/img/avatar-fat.jpg">
                 <div class="rw">
-                  <strong>Jacob Thornton</strong> and <strong>1 other</strong>
-                  <div class="bpg">
-                    Aenean eu leo quam. Pellentesque ornare sem lacinia quam &hellip;
-                  </div>
+                  <strong>Last message </strong> From:<strong>{{this.body.senderName}}</strong>
                 </div>
               </div>
             </a>
@@ -102,11 +97,11 @@
               <li class="rv bpf afo">
                 <div class="rw">
                   <div class="bpd">
-                    Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nulla vitae elit libero, a pharetra augue. Maecenas sed diam eget risus varius blandit sit amet non magna. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Sed posuere consectetur est at lobortis.
+                    {{this.body.message}}
                   </div>
                   <div class="bpe">
                     <small class="axc">
-                      <a href="#">Dave Gamache</a> at 4:20PM
+                      <a href="#">{{this.body.senderName}}</a> {{this.body.createdAt}}
                     </small>
                   </div>  
                 </div>
@@ -114,13 +109,10 @@
               </li>
             </ul>
           </div>
-
-
-
-
-
         </div>
       </div>
+      {{/if}}
+      {{/each}}
     </div>
   </div>
 </div>

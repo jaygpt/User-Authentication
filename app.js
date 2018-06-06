@@ -36,8 +36,6 @@ app.use(methodOverride('_method'));
 app.set('views', path.join(__dirname, 'views'));
 const {select,isequal} = require('./helpers/handlebar-helper');
 app.engine('handlebars',exphbs({defaultLayout: 'layout', helpers: {select:select,isequal: isequal}}));
-//app.engine('handlebars', exphbs({defaultLayou});t:'layout'}));
-// exphbs.registerPartial('partial', fs.readFileSync(__dirname + '/views/partial.hbs', 'utf8'));
 hbs.registerPartials(__dirname + '/views/partials');
 
 app.set('view engine', 'handlebars');
@@ -89,6 +87,7 @@ app.use(function (req, res, next) {
   res.locals.error = req.flash('error');
    res.locals.user = req.user || null;
     res.locals.resl = req.resl || null;
+    res.locals.mes = req.mes || null;
 next();
 });
 //routing file
