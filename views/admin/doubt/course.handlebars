@@ -1,0 +1,16 @@
+{{#each questions}}
+          <div class="card mb-4">
+            <div class="card-body">
+              <h2 class="card-title">{{course.course}}</h2>
+              <p class="card-text">{{question}}</p>
+              <a href="/doubt/answer/{{id}}" class="btn btn-primary">Answer &rarr;</a>
+              {{#if this.file}}
+              <a href="/doubt/download/{{id}}" style="float:right"><i class="fa fa-download btn btn-primary" aria-hidden="true"> Files</i></a>
+              {{/if}}
+            </div>
+            <div class="card-footer text-muted">
+              Posted on {{date}} by
+              <span style="font-weight:bold">{{name}}</span>
+            </div>
+          </div>
+{{/each}}

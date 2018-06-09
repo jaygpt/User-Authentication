@@ -45,25 +45,7 @@ router.get('/',ensureAuthentication,(req,res) => {
 })
 Message.aggregate([
     {$match : {'receiverName': req.user.username}},
-    {$sort: {'createdAt': -1}},
-    {
-        $group: {"_id" :{
-            "last_message_between":{
-                $cond:[
-                    {
-                        $gt:[
-                            {$substr:["$senderName", 0 , 1]},
-                            {$substr: ["receiverName",0,1]}
-                        ]
-                    },
-                    {$concat: ["$senderName"," and ","$receiverName"]},
-                    {$concat: ["$receiverName"," and ","$senderName"]}
-                ]
-            }
-        }, "body" : {$first: "$$ROOT"}
-    }
-    }
-
+    {$sort: {'createdAt': -1}}
 ])
 .then((found) => {
     res.render('private/chat',{alluser: alluser,mes: found});

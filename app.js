@@ -18,9 +18,9 @@ var hbs = require('hbs');
 const methodOverride = require('method-override');
 const upload = require('express-fileupload');
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/loginapp');
+mongoose.connect('mongodb://localhost:27017/loginapp');
 var db = mongoose.connection;
-
+var senior = require('./routes/senior');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var admin = require('./routes/admin');
@@ -28,6 +28,10 @@ var home = require('./routes/home');
 var group = require('./routes/group');
 var chat = require('./routes/chat');
 var profile = require('./routes/profile');
+var course = require('./routes/course');
+var coursera = require('./routes/coursera');
+var doubt = require('./routes/doubt');
+var student = require('./routes/student');
 //initialising the app
 var app = express();
 //app.use(upload());
@@ -35,7 +39,7 @@ app.use(methodOverride('_method'));
 // View Engine
 app.set('views', path.join(__dirname, 'views'));
 const {select,isequal} = require('./helpers/handlebar-helper');
-app.engine('handlebars',exphbs({defaultLayout: 'layout', helpers: {select:select,isequal: isequal}}));
+app.engine('handlebars',exphbs({defaultLayout: 'layout', helpers: {select:select,isequal: isequal,isEqual: isequal}}));
 hbs.registerPartials(__dirname + '/views/partials');
 
 app.set('view engine', 'handlebars');
@@ -99,6 +103,11 @@ app.use('/home',home);
 app.use('/group',group);
 app.use('/chat',chat);
 app.use('/profile',profile);
+app.use('/senior',senior);
+app.use('/course',course);
+app.use('/coursera',coursera);
+app.use('/search',student);
+app.use('/doubt',doubt);
 
 // Set Port
 app.set('port', (process.env.PORT || 3000));

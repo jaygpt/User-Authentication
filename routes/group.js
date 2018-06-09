@@ -66,7 +66,7 @@ router.get('/:name',ensureAuthentication,function(req,res){
             Message.aggregate([
                 {$match : {'receiverName': req.user.username}},
                 {$sort: {'createdAt': -1}},
-                {
+                /* {
                     $group: {"_id" :{
                         "last_message_between":{
                             $cond:[
@@ -82,7 +82,7 @@ router.get('/:name',ensureAuthentication,function(req,res){
                         }
                     }, "body" : {$first: "$$ROOT"}
                 }
-                }
+                } */
             
             ])
             .then((noti)=>{

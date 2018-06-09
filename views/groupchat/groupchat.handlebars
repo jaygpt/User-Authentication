@@ -174,7 +174,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
       </div>
       {{#each mes}}
-      {{#if this.body.isRead}}
+      {{#if this.isRead}}
       <div class="modal-body afx js-modalBody">
         <div class="axw">
           <div class="bow cj ca js-msgGroup">
@@ -182,29 +182,15 @@
               <div class="rv">
                 <img class="us bos vb yb aff" src="assets/img/avatar-fat.jpg">
                 <div class="rw">
-                  <strong>Last message </strong> From:<strong>{{this.body.senderName}}</strong>
+                  <strong>Last message </strong> From:<strong>{{this.senderName}}</strong>
+                  <div class="bpd">{{this.message}}</div>
+                  <p> {{this.createdAt}} </p>
+                  
                 </div>
               </div>
             </a>
             
         </div>
-          <div class="d-none afc js-conversation">
-            <ul class="bow bpc">
-              <li class="rv bpf afo">
-                <div class="rw">
-                  <div class="bpd">
-                    {{this.body.message}}
-                  </div>
-                  <div class="bpe">
-                    <small class="axc">
-                      <a href="#">{{this.body.senderName}}</a> {{this.body.createdAt}}
-                    </small>
-                  </div>  
-                </div>
-                <img class="us bos vb yb afi" src="assets/img/avatar-dhg.png">
-              </li>
-            </ul>
-          </div>
         </div>
       </div>
       {{/if}}

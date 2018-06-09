@@ -4,21 +4,14 @@ var User = require('./users');
 var async = require('async');
 var Club = require('../models/club.js');
 var user = require('../models/user.js');
+//var Post = require('../models/post.js');
 var Message = require('../models/message.js');
 var department_feed = require('../models/department_feed');
-var multer = require('multer');
 var path = require('path');
+const {isEmpty} = require('../helpers/uploadhelper');
 
-const storage = multer.diskStorage({
-    destination: './public/uploads/',
-    filename: function(req, file, cb){
-      cb(null,file.fieldname + '-' + Date.now() + path.extname(file.originalname));
-    }
-  });
-const upload = multer({
-      storage: storage
-      //for other condition of limits thus in this class wes
-  }).single('filename');
+const upload = require('express-fileupload');
+router.use(upload());
 
 router.get('/',ensureAuthentication,function(req,res){
         //console.log('MAY' + User.myname());
@@ -45,12 +38,12 @@ router.get('/',ensureAuthentication,function(req,res){
                 }else{
                 for(let j = news.feeds.length - 1; j>= 0;j--)
                     {
-                        var userimg = "";
+                        /* var userimg = "";
                         user.findOne({username:news.feeds[j].sender})
                             .then((found) =>{
                                 userimg = found.profile.image;
                                 console.log(userimg);
-                            })
+                            }) */
                             
                                 var obj = { 
                                     comments: news.feeds[j].comments,
@@ -58,11 +51,11 @@ router.get('/',ensureAuthentication,function(req,res){
                                     sender: news.feeds[j].sender,
                                     message: news.feeds[j].message,
                                     image: news.feeds[j].image,
-                                    userimage : userimg
+                                    //userimage : userimg
                                 }
                                 feed.push(obj);
                     }
-                    console.log(feed);
+                    //console.log(feed);
                     Message.aggregate([
                         {$match : {'receiverName': req.user.username}},
                         {$sort: {'createdAt': -1}},
@@ -138,59 +131,39 @@ router.post('/:id',function(req,res){
 
 
 router.post('/',function(req,res){
-    var msg = req.body.message;
-    var username = req.body.sender;
-    //console.log(msg);
-    //console.log(User.mydepartment());
-    upload(req,res,(err) => {
-        if(err){
-            res.render('index',{msg: err});
-        }
-        else{
-            if(req.file !== undefined){
-                department_feed.findOne({department:User.mydepartment()})
-                .then((mydepartment) => {
-                var post = {
-                    sender: User.myname(),
-                    message: null,
-                    image: req.file.filename
-                }
-                if(mydepartment === null)
+    let filename = '';
+    if(!isEmpty(req.files)){
+        let file = req.files.file;
+        filename = Date.now() + file.name;
+        file.mv('./public/uploads/'+filename,function(err){
+            if(err) return err;
+        });
+    }
+    department_feed.findOne({department: User.mydepartment()})
+    .then((news) => {
+        const posts = {
+            message: req.body.message,
+            image: filename,
+            sender: User.myname()
+        };
+        console.log(posts);
+        if(news === null)
                             {
                                 var dep = new department_feed();
                                 dep.department = User.mydepartment();
-                                dep.feeds.push(post);
+                                dep.feeds.push(posts);
                                 dep.save();
                             }else{
-                                mydepartment.feeds.push(post);
-                                mydepartment.save();
+                                news.feeds.push(posts);
+                                news.save()
+                                .then(function(result){
+                                    res.redirect('/admin/posts');
+                               }).catch(function(err){
+                                   return err;
+                               });
                             }
-            })
-            console.log(req.file);
-            }
-            else{
-                department_feed.findOne({department: User.mydepartment()})
-                .then((news) => {
-                        var post = {
-                        sender: User.myname(),
-                        message: msg,
-                        image: null
-                        }
-                        if(news === null)
-                            {
-                                var dep = new department_feed();
-                                dep.department = User.mydepartment();
-                                dep.feeds.push(post);
-                                dep.save();
-                            }else{
-                                news.feeds.push(post);
-                                news.save();
-                            }
-            })
-            }
-        }
     })
-        
+    
     res.redirect('/home');
 });
 
