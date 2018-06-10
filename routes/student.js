@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/";
+var url = "mongodb://jaygpt:Qwert12345@ds011268.mlab.com:11268/";
 const User = require('../models/user');
 
 router.get('/',function(req,res){
     MongoClient.connect(url,{ useNewUrlParser: true } ,function(err, db) {
         if (err) throw err;
-        var dbo = db.db("loginapp");
+        var dbo = db.db("departmental_portal_iitk");
         dbo.collection("users").find({}).toArray(function(err, result) {
           if (err) throw err;
           res.render('admin/search/student',{result:result});
