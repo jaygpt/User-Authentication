@@ -1,14 +1,14 @@
 const express = require('express');
 const router = express.Router();
-var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://jaygpt:Qwert12345@ds011268.mlab.com:11268/";
+/* var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://jaygpt:Qwert12345@ds011268.mlab.com:11268/"; */
 const User = require('../models/user');
 
 router.get('/:id',function(req,res){
     User.findOne({_id: req.params.id}).then(function(user){
         var interest = user.profile.clubi;
         //console.log(user.club);
-        MongoClient.connect(url,{ useNewUrlParser: true } ,function(err, db) {
+       /*  MongoClient.connect(url,{ useNewUrlParser: true } ,function(err, db) {
             if (err) throw err;
             var dbo = db.db("departmental_portal_iitk");
             dbo.collection("users").find({club:interest}).toArray(function(err, result) {
@@ -17,7 +17,11 @@ router.get('/:id',function(req,res){
               res.render('senior',{result:result});
               db.close();
             });
-          }); 
+          }); */ 
+        User.find({club:interest})
+          .then((found)=>{
+            res.render('senior',{result:found});
+          })
     });
 });
 router.get('/show/:id',function(req,res){
