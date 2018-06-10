@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/";
+var url = "mongodb://jaygpt:Qwert12345@ds011268.mlab.com:11268/";
 const User = require('../models/user');
 
 router.get('/:id',function(req,res){
@@ -10,7 +10,7 @@ router.get('/:id',function(req,res){
         //console.log(user.club);
         MongoClient.connect(url,{ useNewUrlParser: true } ,function(err, db) {
             if (err) throw err;
-            var dbo = db.db("loginapp");
+            var dbo = db.db("departmental_portal_iitk");
             dbo.collection("users").find({club:interest}).toArray(function(err, result) {
                 //console.log(result);
               if (err) throw err;

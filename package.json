@@ -31,6 +31,8 @@
     "express-messages": "*",
     "express-session": "*",
     "express-validator": "*",
+    "forever": "^0.15.3",
+    "forever-monitor": "^1.7.1",
     "formidable": "^1.2.1",
     "gridfs-stream": "^1.1.1",
     "handlebars": "^4.0.11",
