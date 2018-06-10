@@ -114,7 +114,9 @@ app.use('/course',course);
 app.use('/coursera',coursera);
 app.use('/search',student);
 app.use('/doubt',doubt);
-
+app.use(function(req,res){
+    res.render('404err');
+});
 // Set Port
 app.set('port', (process.env.PORT || 3000));
 var server = app.listen(app.get('port'), function(){
