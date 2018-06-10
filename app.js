@@ -17,8 +17,12 @@ var user = require('./models/user');
 var hbs = require('hbs');
 const methodOverride = require('method-override');
 const upload = require('express-fileupload');
+var compression = require('compression');
+var helmet = require('helmet');
+
+
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/loginapp');
+mongoose.connect('mongodb://jaygpt:Qwert12345@ds011268.mlab.com:11268/departmental_portal_iitk');
 var db = mongoose.connection;
 var senior = require('./routes/senior');
 var routes = require('./routes/index');
@@ -43,7 +47,9 @@ app.engine('handlebars',exphbs({defaultLayout: 'layout', helpers: {select:select
 hbs.registerPartials(__dirname + '/views/partials');
 
 app.set('view engine', 'handlebars');
-
+// For secuirity
+app.use(compression());
+app.use(helmet());
 // BodyParser Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
