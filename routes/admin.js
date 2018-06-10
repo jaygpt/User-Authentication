@@ -58,7 +58,7 @@ router.post('/',(req,res) => {
             newClub.positioninclub = req.body.position;
             //newClub.image = req.file.myImage;
             newClub.save((err) =>{
-                res.redirect('/');
+                res.redirect('/home');
                 req.flash('failure_msg', 'Your detail is not saved');
             })
         }
