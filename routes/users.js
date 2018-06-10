@@ -51,12 +51,12 @@ router.post('/register',function(req,res){
     const secretToken = randomstring.generate();
     req.checkBody('name', 'Name is required').notEmpty();
 	req.checkBody('email', 'Email is required').notEmpty();
-	req.checkBody('email', 'Email is not valid').isEmail();
+	//req.checkBody('email', 'Email is not valid').isEmail();
 	req.checkBody('username', 'Username is required').notEmpty();
 	req.checkBody('password', 'Password is required').notEmpty();
     req.checkBody('department', 'Please Enter your department').notEmpty();
     req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
-    
+    var email2 = email + '@iitk.ac.in';
     var errors = req.validationErrors();
     
     if(errors){
@@ -67,12 +67,12 @@ router.post('/register',function(req,res){
     else{
         var newUser = new User({
         name: name,
-        email: email,
+        email: email2,
         password: password,
         username: username,
         department: department,
         secretToken: secretToken,
-        flag: false
+        flag: true
         });
         const html = `Hi there,
       <br/>
@@ -88,7 +88,7 @@ router.post('/register',function(req,res){
       Have a pleasant day.`;
 
       // Send email
-      mailer.sendEmail('admin@sandbox1b78d98d24094636bcd801883ae8350f.mailgun.org', email, 'Please verify your email!', html);
+      mailer.sendEmail('admin@sandbox1b78d98d24094636bcd801883ae8350f.mailgun.org', email2, 'Please verify your email!', html);
         User.createUser(newUser, function (err, user) {
             if (err) throw err;
             //console.log(user);
