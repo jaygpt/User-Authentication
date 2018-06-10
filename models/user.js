@@ -8,7 +8,13 @@ var UserSchema = mongoose.Schema({
 	},
 	password: {
 		type: String
-	},
+    },
+    secretToken: {
+        type: String,
+    },
+    flag: {
+        type: Boolean
+    },
 	email: {
 		type: String,
         unique: true

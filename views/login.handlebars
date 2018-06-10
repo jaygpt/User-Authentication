@@ -41,7 +41,11 @@
           padding-left: 80px;
       }
 </style>
+    
     <div class="card card-login mx-auto mt-5">
+        {{#if success_msg}}
+            <div class="alert alert-success">{{success_msg}}</div>
+        {{/if}}
     <div class="card-header">Login</div>
     <div class="imgcontainer">
 
