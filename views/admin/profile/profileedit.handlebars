@@ -1,0 +1,130 @@
+<link href='https://fonts.googleapis.com/css?family=Architects Daughter' rel='stylesheet'>
+<h1>Profile</h1>
+<img src="/uploads/{{user.profile.image}}" alt="User Image" width="200px" height="200px" style="border-radius:100px">
+  <form class="form-horizontal" action="/profile/profileedit/{{user.id}}?_method=PUT" method="post" enctype="multipart/form-data">
+  <div class="form-group">
+        <label for="file" class="control-label col-sm-2">Change&nbsp;User&nbsp;Pic</label>
+        <div class="col-sm-10">
+          <input type="file" value="/uploads/{{user.profile.image}}" name="file" class="form-control" id="file">
+        </div>
+  </div>
+  <div class="form-group" style="display:none">
+    <label class="control-label col-sm-2" for="image">Add&nbsp;a&nbsp;temporary&nbsp;bio:</label>
+    <div class="col-sm-10">
+      <input type="text" value="{{user.profile.image}}" name="image" class="form-control" id="image" placeholder="Current user Image">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="bio">Add&nbsp;a&nbsp;temporary&nbsp;bio:</label>
+    <div class="col-sm-10">
+      <input type="text" value="{{user.profile.bio}}" name="bio" class="form-control" id="bio" placeholder="add a Temporary bio">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="room">Residence:</label>
+    <div class="col-sm-10">
+      <input type="text" value="{{user.profile.room}}" name="room" class="form-control" id="room" placeholder="Enter your room & hall">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="club">Club&nbsp;you&nbsp;are&nbsp;involved&nbsp;in:</label>
+    <div class="col-sm-10">
+        <select class="form-control" name="club" id="club">
+          {{#select user.profile.club}}
+            <option value="none">none</option>
+            <option value="Aeromodelling Club">Aeromodelling Club</option>
+            <option value="Astronomy Club">Astronomy Club</option>
+            <option value="BRaIN">BRaIN</option>
+            <option value="Electronics Club">Electronics Club</option>
+            <option value="Gliding Hobby Group">Gliding Hobby Group</option>
+            <option value="Programming Club">Programming Club</option>
+            <option value="Team IGVC, IITK">Team IGVC, IITK</option>
+            <option value="Robotics Club">Robotics Club</option>
+            <option value="Rubik's Cube Hobby Group">Rubik's Cube Hobby Group</option>
+            <option value="SAE, IITK">SAE, IITK</option>
+            <option value="Science Coffee House">Science Coffee Houseg</option>
+            <option value="DesCon Hobby Group">DesCon Hobby Group</option>
+          {{/select}}
+            
+        </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="clubp">position&nbsp;at&nbsp;club:</label>
+    <div class="col-sm-10">
+        <select class="form-control" name="clubp" id="clubp">
+          {{#select user.profile.position }}
+            <option value="none">none</option>
+            <option value="member">Member</option>
+            <option value="coordinator">Coordinator</option>
+            <option value="secretary">Secretary</option>
+          {{/select}}
+        </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="project">Ongoing&nbsp;Project:</label>
+    <div class="col-sm-10">
+      <input type="text" value="{{user.profile.project}}" name="project" class="form-control" id="project" placeholder="Present Projects">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="clubi">Club&nbsp;you&nbsp;want&nbsp;to&nbsp;be&nbsp;part&nbsp;of/&nbsp;past&nbsp;clubs:</label>
+    <div class="col-sm-10">
+        <select class="form-control" name="clubi" id="clubi">
+          {{#select user.profile.clubi }}
+            <option value="Aeromodelling Club">Aeromodelling Club</option>
+            <option value="Astronomy Club">Astronomy Club</option>
+            <option value="BRaIN">BRaIN</option>
+            <option value="Electronics Club">Electronics Club</option>
+            <option value="Gliding Hobby Group">Gliding Hobby Group</option>
+            <option value="Programming Club">Programming Club</option>
+            <option value="Team IGVC, IITK">Team IGVC, IITK</option>
+            <option value="Robotics Club">Robotics Club</option>
+            <option value="Rubik's Cube Hobby Group">Rubik's Cube Hobby Group</option>
+            <option value="SAE, IITK">SAE, IITK</option>
+            <option value="Science Coffee House">Science Coffee Houseg</option>
+            <option value="DesCon Hobby Group">DesCon Hobby Group</option>
+          {{/select}}
+        </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="pastprojects">Past&nbsp;experience&nbsp;and&nbsp;projects:</label>
+    <div class="col-sm-10">
+      <input type="text" value="{{user.profile.pastprojects}}" name="pastprojects" class="form-control" id="pastprojects" placeholder="Past experience and projects:">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="intern"> Internship: </label>
+    <div class="col-sm-10">
+      <input type="text" value="{{user.profile.intern}}" name="intern" class="form-control" id="intern" placeholder="Present / past internship">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="sports">Sports&nbsp;Involved/Sports&nbsp;interested&nbsp;in:</label>
+    <div class="col-sm-10">
+        <select class="form-control" name="sports" id="sports">
+          {{#select user.profile.sports }}
+            <option value="ATHLETICS">ATHLETICS</option>
+            <option value="BADMINTON">BADMINTON</option>
+            <option value="BASKETBALL">BASKETBALL</option>
+            <option value="CRICKET">CRICKET</option>
+            <option value="FOOTBALL">FOOTBALL</option>
+            <option value="HOCKEY">HOCKEY</option>
+            <option value="LAWN TENNIS">LAWN TENNIS</option>
+            <option value="SWIMMING">SWIMMING</option>
+            <option value="TABLE TENNIS">TABLE TENNIS</option>
+            <option value="VOLLEYBALL">VOLLEYBALL</option>
+            <option value="WEIGHT LIFTING">WEIGHT LIFTING</option>
+            <option value="WALL CLIMBING">WALL CLIMBING</option>
+          {{/select}}
+        </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+</form> 

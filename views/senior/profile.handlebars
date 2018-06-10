@@ -1,0 +1,39 @@
+<link href='https://fonts.googleapis.com/css?family=Architects Daughter' rel='stylesheet'>
+
+<h1>&nbsp;</h1>
+ <img src="/uploads/{{user.profile.image}}" alt="User Image" width="350px" height="350px" style="float:left; margin-right:80px; border-radius:175px">
+ <section>
+    <h1 style="text-transform:uppercase">{{user.firstName}} {{user.lastName}}<span style="font-size:25px">({{user.profile.bio}})</span>
+</a></h1>
+</section>
+<div style="font-family:Architects Daughter">
+<section>
+    <h5>{{user.branch}} ({{user.year}})</h5>
+</section>
+<section>
+    <h5>{{user.profile.room}}</h5>
+</section>
+<section>
+    <h5>{{user.profile.club}} ({{user.profile.position}})</h5>
+</section>
+<section>
+    <h5><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+ Ongoing Projects: {{user.profile.project}} </h5>
+</section>
+<section>
+    <h5><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+ Club I want to be part of: {{user.profile.clubi}}</h5>
+</section>
+<section>
+    <h5><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+ Past experience/ projects: {{user.profile.pastprojects}}</h5>
+</section>
+<section>
+    <h5><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+ Internship: {{user.profile.intern}} </h5>
+</section>
+<section>
+    <h5><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+ Sports Involved/Sports interested in: {{user.profile.sports}}</h5>
+</section>
+</div>

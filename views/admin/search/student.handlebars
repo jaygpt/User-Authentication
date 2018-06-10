@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="https://rawgit.com/LeaVerou/awesomplete/gh-pages/awesomplete.css">
+<div style="font-family:Architects Daughter">
+    <form action="/search" method="post" class="form-horizontal">
+    <div class="form-group">
+        <div class="col-sm-6">
+            <input name="name" class="awesomplete form-control" list="mylist" placeholder="Search people" />
+            <datalist id="mylist">
+                {{#each result}}
+                <option value="{{this.name}}">{{this.name}} ({{this.department}})</option>
+                {{/each}}
+            </datalist>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-6">
+          <button class="btn btn-primary" type="submit">Go!</button>
+        </div>
+    </div>
+</form>
+</div>
+
+<div style="allign:Centre">
+    <img src="https://thepickde.files.wordpress.com/2015/06/minions_teaserplakat2.jpg" width="400px" height="500px">
+</div>
+<script type="text/javascript" src="https://rawgit.com/LeaVerou/awesomplete/gh-pages/awesomplete.min.js"></script>
+

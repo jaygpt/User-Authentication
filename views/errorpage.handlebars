@@ -1,22 +1,17 @@
-{{#if error_msg}}
+
+      {{#if error_msg}}
         <div class="alert alert-danger">{{error_msg}}</div>
       {{/if}}
-
       {{#if error}}
-        <div class="alert alert-danger">{{error}}</div>
-        {{/if}}
-        <form class="modalcontent animate" method="post" action="/users/login">
-
+      <div class="alert alert-danger">{{error}}</div>
+      {{/if}}
+      <form class="modalcontent animate" method="post" action="/users/login">
         <h2 style="text-align: center">Retry Login</h2>
-        
         <br>
         <div class="imgcontainer">
-
-        <img src="https://wallpapersite.com/images/wallpapers/stuart-the-minion-2880x1800-hd-4k-8k-2678.jpg" alt="Avatar" class="avatar" align="left">
+        <img src="https://cdn.dribbble.com/users/258439/screenshots/1077389/minion-app-iconx2_1x.jpg" alt="Avatar" class="avatar" align="left">
         </div>
-
         <div class="contai">
-
         <label for="uname"><b>Username</b></label>
         <br>
         <input type="text" placeholder="Enter Username" name="username" required>
@@ -32,10 +27,23 @@
         <br>
         <br>
         <button type="submit" class="btn btn-default" id="submit">Submit</button>
-
         </div>
-
         <div class="containr" style="background-color:#f1f1f1">
         <span class="psw"><a href="#">Forgot Password?</a></span>
         </div>
         </form>
+
+<div class="col-12">
+  <div class="row">
+    <form class="form-signin" action="/users/verify" method="POST">
+  <h2 class="form-signin-heading">Verify Your Email</h2>
+
+  <label for="secretToken" class="sr-only">Secret Token</label>
+  <input type="secretToken" id="secretToken" name="secretToken" class="form-control" placeholder="Secret Token" required autofocus>
+
+  <br/>
+  
+  <button class="btn btn-lg btn-default btn-block" type="submit">Verify</button>
+</form>
+  </div>
+</div>

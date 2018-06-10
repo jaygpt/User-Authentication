@@ -81,7 +81,7 @@ h3 {
     font-size: 13px;
     font-weight: 600;
     padding: 18px 10px;
-    width: 200%;
+    width: 100%;
     border: 1px solid rgba(128, 128, 128, 0.32);
 }
 
@@ -95,7 +95,7 @@ h3 {
     height: 360px;
     overflow-x: hidden;
     overflow-y: auto;
-    width: 200%;
+    width: 100%;
     border-left: 1px solid rgba(128, 128, 128, 0.32);
     border-bottom: 1px solid rgba(128, 128, 128, 0.32);
     border-right: 1px solid rgba(128, 128, 128, 0.32);

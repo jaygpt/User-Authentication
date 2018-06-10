@@ -13,20 +13,35 @@ var mongoose = require('mongoose');
 var socketIO = require('socket.io');
 var http = require('http');
 var {Users} = require('./helpers/UserClass');
-
-mongoose.connect('mongodb://localhost/loginapp');
+var user = require('./models/user');
+var hbs = require('hbs');
+const methodOverride = require('method-override');
+const upload = require('express-fileupload');
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://localhost:27017/loginapp');
 var db = mongoose.connection;
-
+var senior = require('./routes/senior');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var admin = require('./routes/admin');
 var home = require('./routes/home');
 var group = require('./routes/group');
+var chat = require('./routes/chat');
+var profile = require('./routes/profile');
+var course = require('./routes/course');
+var coursera = require('./routes/coursera');
+var doubt = require('./routes/doubt');
+var student = require('./routes/student');
 //initialising the app
 var app = express();
+//app.use(upload());
+app.use(methodOverride('_method'));
 // View Engine
 app.set('views', path.join(__dirname, 'views'));
-app.engine('handlebars', exphbs({defaultLayout:'layout'}));
+const {select,isequal} = require('./helpers/handlebar-helper');
+app.engine('handlebars',exphbs({defaultLayout: 'layout', helpers: {select:select,isequal: isequal,isEqual: isequal}}));
+hbs.registerPartials(__dirname + '/views/partials');
+
 app.set('view engine', 'handlebars');
 
 // BodyParser Middleware
@@ -76,6 +91,7 @@ app.use(function (req, res, next) {
   res.locals.error = req.flash('error');
    res.locals.user = req.user || null;
     res.locals.resl = req.resl || null;
+    res.locals.mes = req.mes || null;
 next();
 });
 //routing file
@@ -85,6 +101,13 @@ app.use('/users', users);
 app.use('/admin',admin);
 app.use('/home',home);
 app.use('/group',group);
+app.use('/chat',chat);
+app.use('/profile',profile);
+app.use('/senior',senior);
+app.use('/course',course);
+app.use('/coursera',coursera);
+app.use('/search',student);
+app.use('/doubt',doubt);
 
 // Set Port
 app.set('port', (process.env.PORT || 3000));
@@ -93,3 +116,4 @@ var server = app.listen(app.get('port'), function(){
 });
 var io = socketIO(server);
 require('./socket/groupchat.js')(io,Users);
+require('./socket/privatemessage.js')(io,Users);

@@ -45,9 +45,10 @@ $(document).ready(function(){
 //        var html = templateScript(context);
 //        $('#messages').append(html);
 //        */
-        console.log(data.sender);
+//        console.log(data.sender);
         var template = document.getElementById('messages');
-        template.innerHTML +=  '<li class = "left"><span class = "chat-img1 pull-left"><img src="http://placehold.it/300x300" class="img-circle" alt=""></span><div class = "chat-body1"><span class="chat-name">' + data.from + '</span><br>' + data.text + '</div></li>';
+        //template.innerHTML +=  '<li class = "left"><span class = "chat-img1 pull-left"><img src="http://placehold.it/300x300" class="img-circle" alt=""></span><div class = "chat-body1"><span class="chat-name">' + data.from + '</span><br>' + data.text + '</div></li>';
+        template.innerHTML += '<div class="lv-item media"><div class="lv-avatar pull-left"><img src="http://p13cdn4static.sharpschool.com/UserFiles/Servers/Server_185110/Image/Students/Student%20Clubs/cultureclub.png" alt=""></div><div><span style="color:darkblue"><strong> ' + data.from + '</strong></span></div><div class="media-body"><div class="ms-item"><span class="glyphicon glyphicon-triangle-left" style="color:#000000;"></span>' + data.text + '</div></div></div>';
     });
    
     $('#message-form').on('submit',function(e){
@@ -56,7 +57,7 @@ $(document).ready(function(){
         socket.emit('createMessage',{
             text: msg,
             room: room,
-            sender: sender,
+            sender: sender
             
         }, function(){
             //this id to remove data from input field

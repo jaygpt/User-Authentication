@@ -1,0 +1,281 @@
+
+<div class="bon" id="app-growl"></div>
+
+<div class="cd fade" id="msgModal" tabindex="-1" role="dialog" aria-labelledby="bpq" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="d">
+        <h5 class="modal-title">Messages</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </div>
+      {{#each mes}}
+      {{#if this.body.isRead}}
+      <div class="modal-body afx js-modalBody">
+        <div class="axw">
+          <div class="bow cj ca js-msgGroup">
+            <a href="#" class="b rx">
+              <div class="rv">
+                <img class="us bos vb yb aff" src="assets/img/avatar-fat.jpg">
+                <div class="rw">
+                  <strong>Last message </strong> From:<strong>{{this.body.senderName}}</strong>
+                </div>
+              </div>
+            </a>
+            
+        </div>
+          <div class="d-none afc js-conversation">
+            <ul class="bow bpc">
+              <li class="rv bpf afo">
+                <div class="rw">
+                  <div class="bpd">
+                    {{this.body.message}}
+                  </div>
+                  <div class="bpe">
+                    <small class="axc">
+                      <a href="#">{{this.body.senderName}}</a> {{this.body.createdAt}}
+                    </small>
+                  </div>  
+                </div>
+                <img class="us bos vb yb afi" src="assets/img/avatar-dhg.png">
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      {{/if}}
+      {{/each}}
+    </div>
+  </div>
+</div>
+<div class="cd fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="bpr" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="d">
+        <h4 class="modal-title">Users</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </div>
+
+      <div class="modal-body afx">
+        <div class="axw">
+          <ul class="bow cj ca">
+            <li class="b">
+              <div class="rv ady">
+                <img class="bos vb yb aff" src="/uploads/{{user.profile.image}}">
+                <div class="rw">
+                  <button class="cg ns ok acx">
+                    <span class="c bps"></span> Follow
+                  </button>
+                  <strong>Jacob Thornton</strong>
+                  <p>@fat - San Francisco</p>
+                </div>
+              </div>
+            </li>
+            <li class="b">
+              <div class="rv ady">
+                <img class="bos vb yb aff" src="assets/img/avatar-dhg.png">
+                <div class="rw">
+                  <button class="cg ns ok acx">
+                    <span class="c bps"></span> Follow
+                  </button>
+                  <strong>Dave Gamache</strong>
+                  <p>@dhg - Palo Alto</p>
+                </div>
+              </div>
+            </li>
+            <li class="b">
+              <div class="rv ady">
+                <img class="bos vb yb aff" src="assets/img/avatar-mdo.png">
+                <div class="rw">
+                  <button class="cg ns ok acx">
+                    <span class="c bps"></span> Follow
+                  </button>
+                  <strong>Mark Otto</strong>
+                  <p>@mdo - San Francisco</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="by aha ahl">
+  <div class="dp">
+    <div class="fj">
+      <div class="pz bpi afo">
+        <div class="qf" style="background-image: url(https://www.demilked.com/magazine/wp-content/uploads/2014/06/nordic-landscape-nature-photography-iceland-34.jpg);"></div>
+        <div class="qa avz">
+          <a href="profile/index.html">
+            <img
+              class="bpj"
+              src="/uploads/{{user.profile.image}}">
+          </a>
+
+          <h6 class="qb">
+            <a class="boa" href="profile/index.html">{{user.name}}</a>
+          </h6>
+
+          <p class="afo">{{user.profile.bio}}</p>
+
+          <ul class="bpk">
+            <li class="bpl">
+              <a href="#userModal" class="boa" data-toggle="modal">
+                {{user.profile.club}}
+                <h6 class="aej">{{user.profile.position}}</h6>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pz vp vy afo">
+        <div class="qa">
+          <h6 class="afh">About <small>· <a href="#">Edit</a></small></h6>
+          <ul class="dc axg">
+            {{#if user.profile.project}}
+            <li><span class="axc h ban aff"></span>Ongoing Projects: <a href="#"> {{user.profile.project}}</a>
+            {{/if}}
+            {{#if user.profile.intern}}
+            <li><span class="axc h bfa aff"></span>Internship: <a href="#"> {{user.profile.intern}}</a>
+            {{/if}}
+            <li><span class="axc h bfq aff"></span>Lives in <a href="#">{{user.profile.room}}</a>
+            <li><span class="axc h bgz aff"></span>From <a href="#">India</a>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="fm">
+
+      <ul class="ca bow box afo">
+
+        <li class="rv b agz">
+          
+          {{!-- <form class="form-control" id="message-form" method="post">
+              <input type="hidden" name ="sender" id="sender" value="{{user.username}}">
+              <textarea class="form-control" name="message" id="msg" placeholder="Type a message"></textarea>
+                          <!input type="file" name="filename" id="file" class="custom-file-input">
+              <div class="clearfix"></div>
+              <div class="chat_bottom">
+              <button id="send-message" class="pull-right btn btn-primary" style="background: #4aa1f3; border: #4aa1f3; ">
+                POST
+              </button>
+              </div>
+          </form>
+          
+          
+        </li>
+        <li>
+          <div class="form-control">
+            <form enctype="multipart/form-data" method="POST">
+            <input type="file" name="filename" id="file">
+            <button id="send-messages" class="pull-right btn btn-primary" style="background: #4aa1f3; border: #4aa1f3; ">
+                submit
+              </button>
+          </form>
+          </div> --}}
+          <form action="/home/" method="post" enctype="multipart/form-data" style="float:left; margin-left:60px">
+        <div class="form-group">
+          <h1></h1>
+            <label for="comment" class="col-sm-2 col-form-label">Post</label>
+            <div>
+                <input type="hidden" name ="sender" id="sender" value="{{user.username}}">
+                <textarea type="text" cols="30" rows="8" name="message" class="form-control" id="comment" placeholder="Enter Description"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="file" class="col-sm-2 col-form-label">Attach&nbsp;File</label>
+            <div>
+                <input type="file" name="file" class="form-control" id="file">
+            </div>
+        </div>
+
+        <button class="btn btn-primary">Submit</button>
+          </form>
+        </li>
+        {{#each feed}}
+          <li class="rv b agz">
+            {{#if this.userimage}}
+          <img
+            class="bos vb yb aff"
+            src="/uploads/{{user.profile.image}}">
+            {{/if}}
+          <div class="rw">
+            <div class="bpb">
+              <h6>{{this.sender}}</h6>
+            </div>
+            <p>
+              {{#if this.message}}
+              {{this.message}}
+              {{/if}}
+            </p>
+            {{#if this.image}}
+            <div class="boy" data-grid="images">
+              <div style="display: none">
+                <img data-action="zoom" data-width="1050" data-height="700" src="../uploads/{{this.image}}">
+              </div>
+            </div>
+            {{/if}}
+          </div>
+          <ul class="bow afa">
+              <li class="rv afh">
+                <a href="/home/{{this._id}}">Comments</a>
+
+              </li>            
+          </ul>
+
+
+        {{/each}}
+
+        
+      </ul>
+    </div>
+    <div class="fj">
+      <div class="alert ro alert-dismissible d-none vy" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <a class="rj" href="profile/index.html">Visit your profile!</a> Check your self, you aren't looking well.
+      </div>
+
+      <div class="pz afo d-none vy">
+        <div class="qa">  
+        <h6 class="afh">Likes <small>· <a href="#">View All</a></small></h6>
+        <ul class="bow box">
+          {{#each clubs}}
+           <li class="rv">
+            <a class="bpu" href="#">
+              <img
+                class="bos vb yb aff"
+                src="http://icons.iconarchive.com/icons/3xhumed/tools-hardware-pack-3/256/Club-3D-Grafikcard-Tray-icon.png">
+            </a>
+            <div class="rw">
+              <strong>{{this.name}}</strong>
+              <div class="bpa">
+                <a href="/group/{{this.name}}">
+                  <button class="cg nz ok">
+                  <span class="h ayi" ></span> Open Chat</button>
+                </a>
+                
+              </div>
+            </div>
+            </li>
+            {{/each}}
+
+        </ul>
+        </div>
+        <div class="qg">
+          These are clubs which you follows.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/chart.js"></script>
+    <script src="/js/toolkit.js"></script>
+    <script src="/js/application.js"></script>

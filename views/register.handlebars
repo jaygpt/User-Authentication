@@ -1,11 +1,11 @@
-<h2 class="page-header">Register</h2>
+{{!-- <h2 class="page-header">Register</h2>
 
 {{#if errors}}
       {{#each errors}}
         <div class="alert alert-danger">{{msg}}</div>
       {{/each}}
-{{/if}}
-
+{{/if}} --}}
+{{!-- 
 <form method="post" action="/users/register">
    <div class="form-group">
     <label>Name</label>
@@ -20,8 +20,21 @@
     <input type="email" class="form-control" placeholder="Email" name="email">
   </div>
     <div class="form-group">
-    <label>Email</label>
-    <input type="text" class="form-control" placeholder="Department" name="department">
+    <label>Department</label>
+        <select name="department" class="form-control">
+            <option value="AEROSPACE_ENGINEERING"> AEROSPACE ENGINEERING</option>
+            <option value="BSBE"> BSBE</option>
+            <option value="CSE"> COMPUTER SCIENCE</option>
+            <option value="CHEMICAL_ENGINEERING"> CHEMICAL ENGINEERING</option>
+            <option value="CHEMISTRY"> CHEMISTRY</option>
+            <option value="EARTH_SCIENCE"> EARTH SCIENCE</option>
+            <option value="ECONOMICS"> ECONOMICS</option>
+            <option value="ELECTRICAL_ENGINEERING"> ELECTRICAL ENGINEERING</option>
+            <option value="MTH"> MATHMATICS AND SCIENTIFIC COMPUTING</option>
+            <option value="MSE"> MATERIAL SCIENCE AND ENGINEERING</option>
+            <option value="MECHANICAL_ENGINEERING"> MECHANICAL ENGINEERING</option>
+            <option value="PHYSICS"> PHYSICS </option>
+        </select>
   </div>
   <div class="form-group">
     <label>Password</label>
@@ -32,4 +45,91 @@
     <input type="password" class="form-control" placeholder="Password" name="password2">
   </div>
   <button type="submit" class="btn btn-default">Submit</button>
-</form>
+</form> --}}
+
+<style>
+   .content-wrapper{
+        background: url('https://ricardolatouchetarot.com/wp-content/uploads/2018/01/ultra-violet-desktop-background.png');
+        background-size: cover;
+        
+      }
+</style>
+ <!--
+author: W3layouts
+author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!-- Mirrored from p.w3layouts.com/demos_new/template_demo/29-06-2017/event_registration_form-demo_Free/744047052/web/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 03 Jun 2018 13:31:29 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<link href="/css/styleregistration.css" rel="stylesheet" type="text/css" media="all" />
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
+	<div class="center-container">
+		<div class="main">
+			<h1 class="w3layouts_head">Portal Registration</h1>
+			<!---728x90--->
+      {{#if errors}}
+      {{#each errors}}
+        <div class="alert alert-danger">{{msg}}</div>
+      {{/each}}
+      {{/if}}
+
+				<div class="w3layouts_main_grid">
+          <form method="post" action="/users/register" class="w3_form_post">
+						<div class="w3_agileits_main_grid w3l_main_grid">
+							<span class="agileits_grid">
+								    <label>Name</label>
+                    <input type="text" class="form-control" placeholder="Name" name="name">
+							</span>
+						</div>
+						<div class="w3_agileits_main_grid w3l_main_grid">
+							<span class="agileits_grid">
+								<label>Username</label>
+                <input type="text" class="form-control" placeholder="Username" name="username">
+							</span>
+						</div>
+						<div class="w3_agileits_main_grid w3l_main_grid">
+							<span class="agileits_grid">
+								<label>Email</label>
+                <input type="text" class="form-control" placeholder="Email" name="email">
+								</span>
+						</div>
+						<div class="w3_agileits_main_grid w3l_main_grid">
+							<span class="agileits_grid">
+								<label>Department</label>
+                <select name="department" class="form-control">
+                    <option value="AEROSPACE_ENGINEERING"> AEROSPACE ENGINEERING</option>
+                    <option value="BSBE"> BSBE</option>
+                    <option value="CSE"> COMPUTER SCIENCE</option>
+                    <option value="CHEMICAL_ENGINEERING"> CHEMICAL ENGINEERING</option>
+                    <option value="CHEMISTRY"> CHEMISTRY</option>
+                    <option value="EARTH_SCIENCE"> EARTH SCIENCE</option>
+                    <option value="ECONOMICS"> ECONOMICS</option>
+                    <option value="ELECTRICAL_ENGINEERING"> ELECTRICAL ENGINEERING</option>
+                    <option value="MTH"> MATHMATICS AND SCIENTIFIC COMPUTING</option>
+                    <option value="MSE"> MATERIAL SCIENCE AND ENGINEERING</option>
+                    <option value="MECHANICAL_ENGINEERING"> MECHANICAL ENGINEERING</option>
+                    <option value="PHYSICS"> PHYSICS </option>
+                </select>
+							</span>
+						</div>
+						<div class="agileits_w3layouts_main_grid w3ls_main_grid">
+							<span class="agileinfo_grid">
+								<label>Password</label>
+                <input type="password" class="form-control" placeholder="Password" name="password">
+							</span>
+						</div>
+            <div class="agileits_w3layouts_main_grid w3ls_main_grid">
+							<span class="agileinfo_grid">
+								<label>Confirm Password</label>
+                <input type="password" class="form-control" placeholder="Password" name="password2">
+							</span>
+						</div>
+					
+					<div class="w3_main_grid">
+						<div class="w3_main_grid_right">
+              <button type="submit" class="btn btn-default">Submit</button>
+						</div>
+					</div>
+				</form>
+			</div>

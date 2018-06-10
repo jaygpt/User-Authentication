@@ -1,0 +1,154 @@
+
+<div class="cd fade" id="msgModal" tabindex="-1" role="dialog" aria-labelledby="bpq" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="d">
+        <h5 class="modal-title">Messages</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </div>
+      {{#each mes}}
+      {{#if this.body.isRead}}
+      <div class="modal-body afx js-modalBody">
+        <div class="axw">
+          <div class="bow cj ca js-msgGroup">
+            <a href="#" class="b rx">
+              <div class="rv">
+                <img class="us bos vb yb aff" src="assets/img/avatar-fat.jpg">
+                <div class="rw">
+                  <strong>Last message </strong> From:<strong>{{this.body.senderName}}</strong>
+                </div>
+              </div>
+            </a>
+            
+        </div>
+          <div class="d-none afc js-conversation">
+            <ul class="bow bpc">
+              <li class="rv bpf afo">
+                <div class="rw">
+                  <div class="bpd">
+                    {{this.body.message}}
+                  </div>
+                  <div class="bpe">
+                    <small class="axc">
+                      <a href="#">{{this.body.senderName}}</a> {{this.body.createdAt}}
+                    </small>
+                  </div>  
+                </div>
+                <img class="us bos vb yb afi" src="assets/img/avatar-dhg.png">
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      {{/if}}
+      {{/each}}
+    </div>
+  </div>
+</div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/jquery.scrollbar.css" />
+		<link rel="stylesheet" href="/css/group.css" />
+		<link rel="stylesheet" href="/css/ionicons.min.css" />
+    <link rel="stylesheet" href="/css/font-awesome.min.css" />
+    <!--Google Font-->
+  <script src="/js/privatechat/pm.js"></script>
+    <div class="col-md-12 mob-clearfix margin-80">
+        <input type = "hidden" name="department" value="{{user.department}}">
+        <input type = "hidden" name="name" id = "name" value="{{user.name}}">
+        <div class="col-md-12">
+            <div class="chat_container">
+                <div class="row">
+                    <div class="col-sm-4 col-md-3">
+                        <div class="row" style="margin-top:10px">
+                            <div class="col-md-12">
+                                <div class="card-container">
+                                    <div class="card">
+                                        <div class="front">
+
+                                            <div class="content main-scroll">
+                                                <div class="main">
+                                                    <a href = "/chat">                                                    <p class="friends" style="margin-bottom:0px;color:#444">
+                                                        Friends<span id="numOfFriends"></span>
+                                                    </p>
+                                                    </a>
+
+                                                    <hr style="margin-top:10px" />
+
+                                                    <div class="onlineFriends">
+                                                    {{#each alluser}}
+                                                        <li>
+                                                        <a href="/chat/{{this.link}}">{{this.name}}</a></li>
+                                                        {{/each}}
+                                                    </div>
+                                                    
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!--chat_sidebar-->
+                    <div class="col-sm-8 col-md-9 message_section assign-width">
+                        <div class="row">
+                            <div class="new_message_head">
+                                <div class="pull-left">
+                                    <button id = "namesender" ><i class="" aria-hidden="true"></i> 
+
+                                    </button></div><div class="pull-right">
+
+                                </div>
+                            </div>
+
+                            <div class="chat_area">
+                                <ul id="messages" class="list-unstyled">
+
+                                        {{#each result}}
+                                        <li class="left clearfix">
+                                            <span class="chat-img1 pull-left">
+                                                <img src="https://placehold.it/300x300" class="img-circle" height="50px" width="50px"/>
+                                            </span>
+                                              <div class="chat-body1 clearfix">
+                                                <p>
+                                                    <span class="chat-name">{{this.senderName}}</span>
+                                                    <br />
+                                                    {{this.message}}
+                                                </p>
+                                              </div>
+                                         </li>
+                                         {{/each}}
+                                </ul>
+                                <!-- </ul> -->
+                            </div><!--chat_area-->
+                            <div class="message_write">
+
+                                <form action="" id="message_form" style="width:100%; padding:0; margin:0;" method="post">
+
+                                    <textarea class="form-control" name="message" id="msg" placeholder="Type a message"></textarea>
+                                      <div class="clearfix"></div>
+                                      <div class="chat_bottom">
+                                          <button type = "submit" id="chatMessage" class="pull-right btn btn-primary" style="background: #4aa1f3; border: #4aa1f3; ">
+                                              Send
+                                          </button>
+                                      </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>  
+<script src="/socket.io/socket.io.js"></script>
