@@ -17,7 +17,11 @@ var clubNames = mongoose.Schema({
 //        default: 'default.png'
 //	},
     post : [postSchema],
-    fans: [fans]
+    fans: [fans],
+    description:{
+        type: String,
+        default: ''
+    }
 });
 
 var Club = module.exports = mongoose.model('Club', clubNames);
