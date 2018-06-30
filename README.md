@@ -7,16 +7,16 @@ The project is designed to create a webportal for Economics Students of IITK. Th
 https://department-portal-iitk.herokuapp.com/
 
 <h3>Technical Discription</h3>
-<strong>User Authentication:</strong>
+<strong>User Authentication:</strong><br>
 1.Use of passport.js for authenticaton for simple authentication.<br>
-2.Addition Verification through mailing using node-mailer,mailgun-js.
-<strong>Chat Application:</strong>
-1.Developed a comprehensive client-server messaging application using socket programming and multi-threading in Nodejs and SocketIo.
-2.Concepts of broadcast, point to point and asynchronous messaging implemented.
-3. Chat Messages and Images are stored as Simple Database in MongoDB.
-<strong>Creating Post,Commenting and Storing Message:</strong>
-1.It is moderately advance implementation of MongoDB ,express-fileUpload,Ajax,nested models, Express-Routing.
-2.Use of mongoDb Functionality of aggregate,find,sort etc many times.
-<strong>Senior Search:</strong>
-It is directly adopted to a front library without any Redux usage to make it easy.
+2.Addition Verification through mailing using node-mailer,mailgun-js.<br>
+<strong>Chat Application:</strong<br>
+1.Developed a comprehensive client-server messaging application using socket programming and multi-threading in Nodejs and SocketIo.<br>
+2.Concepts of broadcast, point to point and asynchronous messaging implemented.<br>
+3. Chat Messages and Images are stored as Simple Database in MongoDB.<br>
+<strong>Creating Post,Commenting and Storing Message:</strong><br>
+1.It is moderately advance implementation of MongoDB ,express-fileUpload,Ajax,nested models, Express-Routing.<br>
+2.Use of mongoDb Functionality of aggregate,find,sort etc many times.<br>
+<strong>Senior Search:</strong><br>
+It is directly adopted to a front library without any Redux usage to make it easy.<br>
 
