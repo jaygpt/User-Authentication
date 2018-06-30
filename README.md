@@ -8,7 +8,7 @@ https://department-portal-iitk.herokuapp.com/
 
 <h3>Technical Discription</h3>
 <strong>User Authentication:</strong>
-1.Use of passport.js for authenticaton for simple authentication.
+1.Use of passport.js for authenticaton for simple authentication.<br>
 2.Addition Verification through mailing using node-mailer,mailgun-js.
 <strong>Chat Application:</strong>
 1.Developed a comprehensive client-server messaging application using socket programming and multi-threading in Nodejs and SocketIo.
