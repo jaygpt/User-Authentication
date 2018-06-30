@@ -10,7 +10,7 @@ https://department-portal-iitk.herokuapp.com/
 <strong>User Authentication:</strong><br>
 1.Use of passport.js for authenticaton for simple authentication.<br>
 2.Addition Verification through mailing using node-mailer,mailgun-js.<br>
-<strong>Chat Application:</strong<br>
+<strong>Chat Application:</strong>
 1.Developed a comprehensive client-server messaging application using socket programming and multi-threading in Nodejs and SocketIo.<br>
 2.Concepts of broadcast, point to point and asynchronous messaging implemented.<br>
 3. Chat Messages and Images are stored as Simple Database in MongoDB.<br>
